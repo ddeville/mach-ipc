@@ -1,5 +1,5 @@
 //
-//  SharedNSXPCConnection.h
+//  SharedDistributedObjects.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-static NSString * const XPCMachServiceName = @"com.ddeville.ipc";
+static NSString * const DistributedObjectsName = @"com.ddeville.ipc";
 
 @protocol ConnectionProtocol <NSObject>
 
-- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion;
+- (NSData *)requestImage:(NSString *)request;
 
 @end

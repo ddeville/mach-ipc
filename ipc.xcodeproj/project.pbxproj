@@ -21,6 +21,8 @@
 		6DB0562B1C3FEEDD0082806F /* ClientNSXPCConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0562A1C3FEEDD0082806F /* ClientNSXPCConnection.m */; };
 		6DB0563B1C3FF6100082806F /* ServerXPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0563A1C3FF6100082806F /* ServerXPC.m */; };
 		6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0563D1C3FF6200082806F /* ClientXPC.m */; };
+		6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056441C3FFF0C0082806F /* ServerDistributedObjects.m */; };
+		6DB056491C3FFF1C0082806F /* ClientDistributedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056481C3FFF1C0082806F /* ClientDistributedObjects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,11 @@
 		6DB0563A1C3FF6100082806F /* ServerXPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerXPC.m; path = server/ServerXPC.m; sourceTree = SOURCE_ROOT; };
 		6DB0563C1C3FF6200082806F /* ClientXPC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientXPC.h; sourceTree = "<group>"; };
 		6DB0563D1C3FF6200082806F /* ClientXPC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientXPC.m; sourceTree = "<group>"; };
+		6DB056411C3FFEF40082806F /* SharedDistributedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedDistributedObjects.h; path = shared/SharedDistributedObjects.h; sourceTree = "<group>"; };
+		6DB056431C3FFF0C0082806F /* ServerDistributedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerDistributedObjects.h; path = server/ServerDistributedObjects.h; sourceTree = SOURCE_ROOT; };
+		6DB056441C3FFF0C0082806F /* ServerDistributedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerDistributedObjects.m; path = server/ServerDistributedObjects.m; sourceTree = SOURCE_ROOT; };
+		6DB056471C3FFF1C0082806F /* ClientDistributedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientDistributedObjects.h; sourceTree = "<group>"; };
+		6DB056481C3FFF1C0082806F /* ClientDistributedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientDistributedObjects.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +171,7 @@
 				6DB056221C3FE9AC0082806F /* Server.h */,
 				6DB056321C3FF5B20082806F /* NSXPCConnection */,
 				6DB056371C3FF5EF0082806F /* xpc */,
+				6DB056421C3FFEFB0082806F /* DO */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -176,6 +184,7 @@
 				6DB056231C3FE9E10082806F /* Client.h */,
 				6DB056331C3FF5BD0082806F /* NSXPCConnection */,
 				6DB056381C3FF5F60082806F /* xpc */,
+				6DB056461C3FFF0F0082806F /* DO */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -239,8 +248,35 @@
 				6DB0561D1C3FE8CE0082806F /* Shared.m */,
 				6DB056341C3FF5C70082806F /* NSXPCConnection */,
 				6DB056351C3FF5D30082806F /* xpc */,
+				6DB056401C3FFEDE0082806F /* DO */,
 			);
 			name = src;
+			sourceTree = "<group>";
+		};
+		6DB056401C3FFEDE0082806F /* DO */ = {
+			isa = PBXGroup;
+			children = (
+				6DB056411C3FFEF40082806F /* SharedDistributedObjects.h */,
+			);
+			name = DO;
+			sourceTree = "<group>";
+		};
+		6DB056421C3FFEFB0082806F /* DO */ = {
+			isa = PBXGroup;
+			children = (
+				6DB056431C3FFF0C0082806F /* ServerDistributedObjects.h */,
+				6DB056441C3FFF0C0082806F /* ServerDistributedObjects.m */,
+			);
+			name = DO;
+			sourceTree = "<group>";
+		};
+		6DB056461C3FFF0F0082806F /* DO */ = {
+			isa = PBXGroup;
+			children = (
+				6DB056471C3FFF1C0082806F /* ClientDistributedObjects.h */,
+				6DB056481C3FFF1C0082806F /* ClientDistributedObjects.m */,
+			);
+			name = DO;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
+				6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */,
 				6DB056271C3FEB130082806F /* ServerNSXPCConnection.m in Sources */,
 				6DB0563B1C3FF6100082806F /* ServerXPC.m in Sources */,
 				6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */,
@@ -357,6 +394,7 @@
 				6DB0560B1C3FDE610082806F /* main.m in Sources */,
 				6DB0562B1C3FEEDD0082806F /* ClientNSXPCConnection.m in Sources */,
 				6DB056081C3FDE610082806F /* ClientApplication.m in Sources */,
+				6DB056491C3FFF1C0082806F /* ClientDistributedObjects.m in Sources */,
 				6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */,
 				6DB0561F1C3FE8CE0082806F /* Shared.m in Sources */,
 			);
