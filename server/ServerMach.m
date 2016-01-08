@@ -8,6 +8,15 @@
 
 #import "ServerMach.h"
 
+#import "SharedMach.h"
+
 @implementation ServerMach
+
+@synthesize requestHandler = _requestHandler;
+
+- (void)startServer
+{
+
+}
 
 @end

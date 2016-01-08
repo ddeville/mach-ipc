@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ClientMIG : NSObject
+#import "Client.h"
+
+@interface ClientMIG : NSObject <Client>
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ServerSocketSync : NSObject
+#import "Server.h"
+
+@interface ServerSocketSync : NSObject <Server>
 
 @end

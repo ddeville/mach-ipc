@@ -8,6 +8,15 @@
 
 #import "ServerMIG.h"
 
+#import "SharedMIG.h"
+
 @implementation ServerMIG
+
+@synthesize requestHandler = _requestHandler;
+
+- (void)startServer
+{
+
+}
 
 @end

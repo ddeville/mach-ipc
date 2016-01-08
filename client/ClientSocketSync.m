@@ -8,6 +8,13 @@
 
 #import "ClientSocketSync.h"
 
+#import "SharedSocketSync.h"
+
 @implementation ClientSocketSync
+
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+{
+
+}
 
 @end

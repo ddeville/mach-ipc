@@ -8,6 +8,13 @@
 
 #import "ClientMach.h"
 
+#import "SharedMach.h"
+
 @implementation ClientMach
+
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+{
+
+}
 
 @end

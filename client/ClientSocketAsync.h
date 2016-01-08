@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ClientSocketAsync : NSObject
+#import "Client.h"
+
+@interface ClientSocketAsync : NSObject <Client>
 
 @end

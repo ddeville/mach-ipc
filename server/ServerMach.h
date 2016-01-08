@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ServerMach : NSObject
+#import "Server.h"
+
+@interface ServerMach : NSObject <Server>
 
 @end

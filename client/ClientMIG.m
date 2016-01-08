@@ -8,6 +8,13 @@
 
 #import "ClientMIG.h"
 
+#import "SharedMIG.h"
+
 @implementation ClientMIG
+
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+{
+
+}
 
 @end

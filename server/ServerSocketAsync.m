@@ -8,6 +8,15 @@
 
 #import "ServerSocketAsync.h"
 
+#import "SharedSocketAsync.h"
+
 @implementation ServerSocketAsync
+
+@synthesize requestHandler = _requestHandler;
+
+- (void)startServer
+{
+
+}
 
 @end
