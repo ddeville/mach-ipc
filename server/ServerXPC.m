@@ -8,7 +8,7 @@
 
 #import "ServerXPC.h"
 
-#import "shared-xpc.h"
+#import "SharedXPC.h"
 
 @interface ServerXPC ()
 

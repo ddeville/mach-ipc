@@ -1,5 +1,5 @@
 //
-//  shared.h
+//  Shared.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -16,6 +16,7 @@ enum connection_type {
     connection_type_cf_message_port_async = 4,
     connection_type_mach_mig = 5,
     connection_type_mach = 6,
+    connection_type_unix_socket = 7,
 };
 typedef enum connection_type connection_type;
 

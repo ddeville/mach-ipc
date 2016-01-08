@@ -1,5 +1,5 @@
 //
-//  xpc-connection.h
+//  SharedNSXPCConnection.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.

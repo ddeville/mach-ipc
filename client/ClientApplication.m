@@ -8,8 +8,7 @@
 
 #import "ClientApplication.h"
 
-#import "shared.h"
-
+#import "Shared.h"
 #import "Client.h"
 #import "ClientNSXPCConnection.h"
 

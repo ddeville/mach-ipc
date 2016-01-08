@@ -8,7 +8,7 @@
 
 #import "ClientXPC.h"
 
-#import "shared-xpc.h"
+#import "SharedXPC.h"
 
 @implementation ClientXPC
 
@@ -38,7 +38,7 @@
             return;
         }
 
-        NSImage *image = [NSKeyedUnarchiver unarchiveObjectWithData:imageData];
+        NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:imageData error:NULL];
         if (image == nil) {
             return;
         }

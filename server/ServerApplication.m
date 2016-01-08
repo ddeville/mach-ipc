@@ -8,8 +8,7 @@
 
 #import "ServerApplication.h"
 
-#import "shared.h"
-
+#import "Shared.h"
 #import "Server.h"
 #import "ServerNSXPCConnection.h"
 

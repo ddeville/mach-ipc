@@ -8,7 +8,7 @@
 
 #import "ClientNSXPCConnection.h"
 
-#import "shared-xpc-connection.h"
+#import "SharedNSXPCConnection.h"
 
 @implementation ClientNSXPCConnection
 

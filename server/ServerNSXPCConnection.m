@@ -8,7 +8,7 @@
 
 #import "ServerNSXPCConnection.h"
 
-#import "shared-xpc-connection.h"
+#import "SharedNSXPCConnection.h"
 
 @interface ServerNSXPCConnection () <NSXPCListenerDelegate, ConnectionProtocol>
 
