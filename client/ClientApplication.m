@@ -29,9 +29,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [self _appendToLog:@"Client launched"];
-
     self.client = [[NSClassFromString(ClientClasses[CONNECTION_TYPE]) alloc] init];
+
+    [self _appendToLog:@"Client launched"];
 }
 
 - (IBAction)requestImage:(id)sender
@@ -52,12 +52,16 @@
     if (string == nil) {
         return;
     }
+    
     NSMutableString *log = [NSMutableString stringWithString:(self.log.string ?: @"")];
     if (log.length != 0) {
         [log appendString:@"\n\n"];
     }
+
     NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle];
-    [log appendFormat:@"%@: %@", time, string];
+    NSString *client = NSStringFromClass([self.client class]);
+    [log appendFormat:@"%@ (%@): %@", time, client, string];
+
     self.log = [[NSAttributedString alloc] initWithString:log attributes:nil];
 }
 

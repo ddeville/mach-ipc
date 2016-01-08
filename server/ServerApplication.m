@@ -28,18 +28,22 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    [self _appendToLog:@"Server launched"];
-
     self.server = [[NSClassFromString(ServerClasses[CONNECTION_TYPE]) alloc] init];
 
     __weak ServerApplication *weakServer = self;
     self.server.requestHandler = ^NSImage *(NSString *request) {
         __strong ServerApplication *server = weakServer;
-        [server _appendToLog:[NSString stringWithFormat:@"Received request \"%@\"", request]];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [server _appendToLog:[NSString stringWithFormat:@"Received request \"%@\"", request]];
+        });
+
         return [NSImage imageNamed:request];
     };
 
     [self.server startServer];
+
+    [self _appendToLog:@"Server started"];
 }
 
 - (void)_appendToLog:(NSString *)string
@@ -47,12 +51,16 @@
     if (string == nil) {
         return;
     }
+
     NSMutableString *log = [NSMutableString stringWithString:(self.log.string ?: @"")];
     if (log.length != 0) {
         [log appendString:@"\n\n"];
     }
+
     NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle];
-    [log appendFormat:@"%@: %@", time, string];
+    NSString *server = NSStringFromClass([self.server class]);
+    [log appendFormat:@"%@ (%@): %@", time, server, string];
+
     self.log = [[NSAttributedString alloc] initWithString:log attributes:nil];
 }
 

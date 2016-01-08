@@ -39,34 +39,35 @@
 - (void)_acceptConnection:(xpc_object_t)connection
 {
     xpc_connection_set_event_handler(connection, ^(xpc_object_t object) {
-        if (xpc_get_type(object) != XPC_TYPE_DICTIONARY) {
-            return;
+        if (xpc_get_type(object) == XPC_TYPE_DICTIONARY) {
+            [self _handleRequest:object];
         }
-        
-        const char *filename = xpc_dictionary_get_string(object, xpc_request_filename_key);
-        xpc_object_t reply = xpc_dictionary_create_reply(object);
-        xpc_connection_t client = xpc_dictionary_get_remote_connection(object);
-
-        if (filename == NULL || reply == NULL || client == NULL) {
-            return;
-        }
-
-        NSString *request = [NSString stringWithUTF8String:filename];
-        NSImage *image = self.requestHandler(request);
-        if (image == nil) {
-            return;
-        }
-
-        NSData *imageData = [NSKeyedArchiver archivedDataWithRootObject:image];
-        if (imageData == nil) {
-            return;
-        }
-
-        xpc_dictionary_set_data(reply, xpc_response_image_key, imageData.bytes, imageData.length);
-        xpc_connection_send_message(client, reply);
-
     });
     xpc_connection_resume(connection);
+}
+
+- (void)_handleRequest:(xpc_object_t)request
+{
+    const char *filename = xpc_dictionary_get_string(request, xpc_request_filename_key);
+    xpc_object_t reply = xpc_dictionary_create_reply(request);
+    xpc_connection_t client = xpc_dictionary_get_remote_connection(request);
+
+    if (filename == NULL || reply == NULL || client == NULL) {
+        return;
+    }
+
+    NSImage *image = self.requestHandler([NSString stringWithUTF8String:filename]);
+    if (image == nil) {
+        return;
+    }
+
+    NSData *imageData = [NSKeyedArchiver archivedDataWithRootObject:image];
+    if (imageData == nil) {
+        return;
+    }
+
+    xpc_dictionary_set_data(reply, xpc_response_image_key, imageData.bytes, imageData.length);
+    xpc_connection_send_message(client, reply);
 }
 
 @end
