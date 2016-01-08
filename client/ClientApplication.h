@@ -10,4 +10,6 @@
 
 @interface ClientApplication : NSObject <NSApplicationDelegate>
 
+- (IBAction)requestImage:(id)sender;
+
 @end

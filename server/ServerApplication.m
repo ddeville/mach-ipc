@@ -8,9 +8,9 @@
 
 #import "ServerApplication.h"
 
-@interface ServerApplication ()
+@interface ServerApplication (/* Bindings */)
 
-@property (weak) IBOutlet NSWindow *window;
+@property (copy, nonatomic) NSAttributedString *log;
 
 @end
 
@@ -18,7 +18,21 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
+    [self _appendToLog:@"Server launched"];
+}
 
+- (void)_appendToLog:(NSString *)string
+{
+    if (string == nil) {
+        return;
+    }
+    NSMutableString *log = [NSMutableString stringWithString:(self.log.string ?: @"")];
+    if (log.length != 0) {
+        [log appendString:@"\n\n"];
+    }
+    NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle];
+    [log appendFormat:@"%@: %@", time, string];
+    self.log = [[NSAttributedString alloc] initWithString:log attributes:nil];
 }
 
 @end

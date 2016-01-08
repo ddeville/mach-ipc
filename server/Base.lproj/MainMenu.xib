@@ -12,11 +12,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="ServerApplication">
-            <connections>
-                <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
-            </connections>
-        </customObject>
+        <customObject id="Voe-Tx-rLC" customClass="ServerApplication"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -675,7 +671,52 @@
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqI-hE-Kyq">
+                        <rect key="frame" x="20" y="20" width="440" height="320"/>
+                        <clipView key="contentView" id="AJQ-ef-lNj">
+                            <rect key="frame" x="1" y="1" width="438" height="318"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="YvC-oX-7Ac">
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="318"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="438" height="318"/>
+                                    <size key="maxSize" width="463" height="10000000"/>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="438" height="318"/>
+                                    <size key="maxSize" width="463" height="10000000"/>
+                                    <connections>
+                                        <binding destination="Voe-Tx-rLC" name="attributedString" keyPath="self.log" id="WoB-GB-EBb">
+                                            <dictionary key="options">
+                                                <bool key="NSAllowsEditingMultipleValuesSelection" value="NO"/>
+                                                <bool key="NSConditionallySetsEditable" value="NO"/>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="5Mg-0s-xkp">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZjM-HP-aBg">
+                            <rect key="frame" x="423" y="1" width="16" height="318"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="zqI-hE-Kyq" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="F9n-Zc-4uH"/>
+                    <constraint firstAttribute="trailing" secondItem="zqI-hE-Kyq" secondAttribute="trailing" constant="20" id="QBS-2o-rgf"/>
+                    <constraint firstItem="zqI-hE-Kyq" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="SVj-1q-AxC"/>
+                    <constraint firstAttribute="bottom" secondItem="zqI-hE-Kyq" secondAttribute="bottom" constant="20" id="jmu-be-qQ5"/>
+                </constraints>
             </view>
+            <point key="canvasLocation" x="321" y="416"/>
         </window>
     </objects>
 </document>
