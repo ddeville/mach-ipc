@@ -10,7 +10,7 @@
 
 #import "SharedDistributedObjects.h"
 
-@interface ServerDistributedObjects () <ConnectionProtocol>
+@interface ServerDistributedObjects () <ServerProtocol>
 
 @property (strong, nonatomic) NSConnection *connection;
 

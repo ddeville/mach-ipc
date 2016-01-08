@@ -10,7 +10,7 @@
 
 static NSString * const DistributedObjectsName = @"com.ddeville.ipc";
 
-@protocol ConnectionProtocol <NSObject>
+@protocol ServerProtocol <NSObject>
 
 - (NSData *)requestImage:(NSString *)request;
 

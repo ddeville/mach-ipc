@@ -20,9 +20,9 @@
     NSConnection *connection = [NSConnection connectionWithRegisteredName:DistributedObjectsName host:nil];
 
     NSDistantObject *proxy = [connection rootProxy];
-    [proxy setProtocolForProxy:@protocol(ConnectionProtocol)];
+    [proxy setProtocolForProxy:@protocol(ServerProtocol)];
 
-    id <ConnectionProtocol> server = (id <ConnectionProtocol>)proxy;
+    id <ServerProtocol> server = (id <ServerProtocol>)proxy;
 
     NSData *data = [server requestImage:name];
     if (data == nil) {
