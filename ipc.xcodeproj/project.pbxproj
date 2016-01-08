@@ -25,6 +25,8 @@
 		6DB056501C400AA00082806F /* ServerNSPortMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0564F1C400AA00082806F /* ServerNSPortMessage.m */; };
 		6DB056531C400AB10082806F /* ClientNSPortMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056521C400AB10082806F /* ClientNSPortMessage.m */; };
 		6DB056551C401DA40082806F /* goobypls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6DB056541C401DA40082806F /* goobypls.jpg */; };
+		6DB0565A1C401F630082806F /* ServerCFMessagePortSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056591C401F630082806F /* ServerCFMessagePortSync.m */; };
+		6DB0565D1C401F6F0082806F /* ClientCFMessagePortSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0565C1C401F6F0082806F /* ClientCFMessagePortSync.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,11 @@
 		6DB056511C400AB10082806F /* ClientNSPortMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientNSPortMessage.h; sourceTree = "<group>"; };
 		6DB056521C400AB10082806F /* ClientNSPortMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientNSPortMessage.m; sourceTree = "<group>"; };
 		6DB056541C401DA40082806F /* goobypls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = goobypls.jpg; path = server/goobypls.jpg; sourceTree = SOURCE_ROOT; };
+		6DB056581C401F630082806F /* ServerCFMessagePortSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerCFMessagePortSync.h; path = server/ServerCFMessagePortSync.h; sourceTree = SOURCE_ROOT; };
+		6DB056591C401F630082806F /* ServerCFMessagePortSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerCFMessagePortSync.m; path = server/ServerCFMessagePortSync.m; sourceTree = SOURCE_ROOT; };
+		6DB0565B1C401F6F0082806F /* ClientCFMessagePortSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientCFMessagePortSync.h; sourceTree = "<group>"; };
+		6DB0565C1C401F6F0082806F /* ClientCFMessagePortSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientCFMessagePortSync.m; sourceTree = "<group>"; };
+		6DB0565F1C401F8A0082806F /* SharedCFMessagePortSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedCFMessagePortSync.h; path = shared/SharedCFMessagePortSync.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +187,7 @@
 				6DB056371C3FF5EF0082806F /* xpc */,
 				6DB056421C3FFEFB0082806F /* DO */,
 				6DB0564C1C400A7C0082806F /* NSPortMessage */,
+				6DB056561C401F390082806F /* CFMessagePortSync */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 				6DB056381C3FF5F60082806F /* xpc */,
 				6DB056461C3FFF0F0082806F /* DO */,
 				6DB0564D1C400A8A0082806F /* NSPortMessage */,
+				6DB056571C401F4B0082806F /* CFMessagePortSync */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 				6DB056351C3FF5D30082806F /* xpc */,
 				6DB056401C3FFEDE0082806F /* DO */,
 				6DB0564A1C400A550082806F /* NSPortMessage */,
+				6DB0565E1C401F710082806F /* CFMessagePortSync */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -313,6 +323,32 @@
 				6DB056521C400AB10082806F /* ClientNSPortMessage.m */,
 			);
 			name = NSPortMessage;
+			sourceTree = "<group>";
+		};
+		6DB056561C401F390082806F /* CFMessagePortSync */ = {
+			isa = PBXGroup;
+			children = (
+				6DB056581C401F630082806F /* ServerCFMessagePortSync.h */,
+				6DB056591C401F630082806F /* ServerCFMessagePortSync.m */,
+			);
+			name = CFMessagePortSync;
+			sourceTree = "<group>";
+		};
+		6DB056571C401F4B0082806F /* CFMessagePortSync */ = {
+			isa = PBXGroup;
+			children = (
+				6DB0565B1C401F6F0082806F /* ClientCFMessagePortSync.h */,
+				6DB0565C1C401F6F0082806F /* ClientCFMessagePortSync.m */,
+			);
+			name = CFMessagePortSync;
+			sourceTree = "<group>";
+		};
+		6DB0565E1C401F710082806F /* CFMessagePortSync */ = {
+			isa = PBXGroup;
+			children = (
+				6DB0565F1C401F8A0082806F /* SharedCFMessagePortSync.h */,
+			);
+			name = CFMessagePortSync;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +453,7 @@
 				6DB056501C400AA00082806F /* ServerNSPortMessage.m in Sources */,
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
 				6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */,
+				6DB0565A1C401F630082806F /* ServerCFMessagePortSync.m in Sources */,
 				6DB056271C3FEB130082806F /* ServerNSXPCConnection.m in Sources */,
 				6DB0563B1C3FF6100082806F /* ServerXPC.m in Sources */,
 				6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */,
@@ -431,6 +468,7 @@
 				6DB0560B1C3FDE610082806F /* main.m in Sources */,
 				6DB0562B1C3FEEDD0082806F /* ClientNSXPCConnection.m in Sources */,
 				6DB056081C3FDE610082806F /* ClientApplication.m in Sources */,
+				6DB0565D1C401F6F0082806F /* ClientCFMessagePortSync.m in Sources */,
 				6DB056531C400AB10082806F /* ClientNSPortMessage.m in Sources */,
 				6DB056491C3FFF1C0082806F /* ClientDistributedObjects.m in Sources */,
 				6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */,
