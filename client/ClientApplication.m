@@ -8,10 +8,21 @@
 
 #import "ClientApplication.h"
 
+#import "shared.h"
+
+#import "Client.h"
+#import "ClientNSXPCConnection.h"
+
 @interface ClientApplication (/* Bindings */)
 
 @property (copy, nonatomic) NSAttributedString *log;
 @property (copy, nonatomic) NSImage *image;
+
+@end
+
+@interface ClientApplication ()
+
+@property (strong, nonatomic) id <Client> client;
 
 @end
 
@@ -20,11 +31,21 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     [self _appendToLog:@"Client launched"];
+
+    self.client = [[NSClassFromString(ClientClasses[CONNECTION_TYPE]) alloc] init];
 }
 
 - (IBAction)requestImage:(id)sender
 {
+    [self _appendToLog:@"Requesting image"];
 
+    [self.client requestImage:@"dolan" completion:^(NSImage *image) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.image = image;
+
+            [self _appendToLog:[NSString stringWithFormat:@"Received image %@", image]];
+        });
+    }];
 }
 
 - (void)_appendToLog:(NSString *)string

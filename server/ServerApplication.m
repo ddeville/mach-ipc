@@ -8,9 +8,20 @@
 
 #import "ServerApplication.h"
 
+#import "shared.h"
+
+#import "Server.h"
+#import "ServerNSXPCConnection.h"
+
 @interface ServerApplication (/* Bindings */)
 
 @property (copy, nonatomic) NSAttributedString *log;
+
+@end
+
+@interface ServerApplication ()
+
+@property (strong, nonatomic) id <Server> server;
 
 @end
 
@@ -19,6 +30,17 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
     [self _appendToLog:@"Server launched"];
+
+    self.server = [[NSClassFromString(ServerClasses[CONNECTION_TYPE]) alloc] init];
+
+    __weak ServerApplication *weakServer = self;
+    self.server.requestHandler = ^NSImage *(NSString *request) {
+        __strong ServerApplication *server = weakServer;
+        [server _appendToLog:[NSString stringWithFormat:@"Received request \"%@\"", request]];
+        return [NSImage imageNamed:request];
+    };
+
+    [self.server startServer];
 }
 
 - (void)_appendToLog:(NSString *)string

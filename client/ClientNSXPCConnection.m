@@ -1,0 +1,30 @@
+//
+//  ClientNSXPCConnection.m
+//  ipc
+//
+//  Created by Damien DeVille on 1/8/16.
+//  Copyright © 2016 Damien DeVille. All rights reserved.
+//
+
+#import "ClientNSXPCConnection.h"
+
+#import "shared-xpc-connection.h"
+
+@implementation ClientNSXPCConnection
+
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+{
+    NSXPCConnection *connection = [[NSXPCConnection alloc] initWithMachServiceName:XPCMachServiceName options:(NSXPCConnectionOptions)0];
+
+    NSXPCInterface *interface = [NSXPCInterface interfaceWithProtocol:@protocol(ConnectionProtocol)];
+    [interface setClasses:[NSSet setWithObject:[NSString class]] forSelector:@selector(requestImage:completion:) argumentIndex:0 ofReply:NO];
+    [interface setClasses:[NSSet setWithObject:[NSImage class]] forSelector:@selector(requestImage:completion:) argumentIndex:0 ofReply:YES];
+    connection.remoteObjectInterface = interface;
+
+    id <ConnectionProtocol> server = connection.remoteObjectProxy;
+
+    [connection resume];
+    [server requestImage:name completion:completion];
+}
+
+@end
