@@ -38,7 +38,7 @@
 {
     [self _appendToLog:@"Requesting image"];
 
-    [self.client requestImage:@"dolan" completion:^(NSImage *image) {
+    [self.client requestImage:@"goobypls" completion:^(NSImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.image = image;
 

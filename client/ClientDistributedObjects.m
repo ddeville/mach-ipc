@@ -17,7 +17,7 @@
     // NSConnection needs a service runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
     NSAssert([NSThread isMainThread], @"The client needs a serviced runloop and should be called on the main thread");
 
-    NSConnection *connection = [NSConnection connectionWithRegisteredName:DistributedObjectsName host:nil];
+    NSConnection *connection = [NSConnection connectionWithRegisteredName:DistributedObjectsServiceName host:nil];
 
     NSDistantObject *proxy = [connection rootProxy];
     [proxy setProtocolForProxy:@protocol(ServerProtocol)];
@@ -29,7 +29,7 @@
         return;
     }
 
-    NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:NULL];
+    NSImage *image = [[NSImage alloc] initWithData:data];
     if (image == nil) {
         return;
     }

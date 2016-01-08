@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-static NSString * const DistributedObjectsName = @"com.ddeville.ipc";
+static NSString * const DistributedObjectsServiceName = @"com.ddeville.ipc";
 
 @protocol ServerProtocol <NSObject>
 

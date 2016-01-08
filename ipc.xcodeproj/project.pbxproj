@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055EF1C3FDE020082806F /* ServerApplication.m */; };
 		6DB055F31C3FDE020082806F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055F21C3FDE020082806F /* main.m */; };
-		6DB055F51C3FDE020082806F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB055F41C3FDE020082806F /* Assets.xcassets */; };
 		6DB055F81C3FDE020082806F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB055F61C3FDE020082806F /* MainMenu.xib */; };
 		6DB056081C3FDE610082806F /* ClientApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056071C3FDE610082806F /* ClientApplication.m */; };
 		6DB0560B1C3FDE610082806F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0560A1C3FDE610082806F /* main.m */; };
@@ -23,6 +22,9 @@
 		6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0563D1C3FF6200082806F /* ClientXPC.m */; };
 		6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056441C3FFF0C0082806F /* ServerDistributedObjects.m */; };
 		6DB056491C3FFF1C0082806F /* ClientDistributedObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056481C3FFF1C0082806F /* ClientDistributedObjects.m */; };
+		6DB056501C400AA00082806F /* ServerNSPortMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0564F1C400AA00082806F /* ServerNSPortMessage.m */; };
+		6DB056531C400AB10082806F /* ClientNSPortMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056521C400AB10082806F /* ClientNSPortMessage.m */; };
+		6DB056551C401DA40082806F /* goobypls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6DB056541C401DA40082806F /* goobypls.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +32,6 @@
 		6DB055EE1C3FDE020082806F /* ServerApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerApplication.h; sourceTree = "<group>"; };
 		6DB055EF1C3FDE020082806F /* ServerApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerApplication.m; sourceTree = "<group>"; };
 		6DB055F21C3FDE020082806F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6DB055F41C3FDE020082806F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DB055F71C3FDE020082806F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6DB055F91C3FDE020082806F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DB056041C3FDE610082806F /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +60,12 @@
 		6DB056441C3FFF0C0082806F /* ServerDistributedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerDistributedObjects.m; path = server/ServerDistributedObjects.m; sourceTree = SOURCE_ROOT; };
 		6DB056471C3FFF1C0082806F /* ClientDistributedObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientDistributedObjects.h; sourceTree = "<group>"; };
 		6DB056481C3FFF1C0082806F /* ClientDistributedObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientDistributedObjects.m; sourceTree = "<group>"; };
+		6DB0564B1C400A710082806F /* SharedNSPortMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedNSPortMessage.h; path = shared/SharedNSPortMessage.h; sourceTree = "<group>"; };
+		6DB0564E1C400AA00082806F /* ServerNSPortMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerNSPortMessage.h; path = server/ServerNSPortMessage.h; sourceTree = SOURCE_ROOT; };
+		6DB0564F1C400AA00082806F /* ServerNSPortMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerNSPortMessage.m; path = server/ServerNSPortMessage.m; sourceTree = SOURCE_ROOT; };
+		6DB056511C400AB10082806F /* ClientNSPortMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientNSPortMessage.h; sourceTree = "<group>"; };
+		6DB056521C400AB10082806F /* ClientNSPortMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientNSPortMessage.m; sourceTree = "<group>"; };
+		6DB056541C401DA40082806F /* goobypls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = goobypls.jpg; path = server/goobypls.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +128,8 @@
 		6DB055FF1C3FDE500082806F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6DB056541C401DA40082806F /* goobypls.jpg */,
 				6DB055F61C3FDE020082806F /* MainMenu.xib */,
-				6DB055F41C3FDE020082806F /* Assets.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -172,6 +179,7 @@
 				6DB056321C3FF5B20082806F /* NSXPCConnection */,
 				6DB056371C3FF5EF0082806F /* xpc */,
 				6DB056421C3FFEFB0082806F /* DO */,
+				6DB0564C1C400A7C0082806F /* NSPortMessage */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 				6DB056331C3FF5BD0082806F /* NSXPCConnection */,
 				6DB056381C3FF5F60082806F /* xpc */,
 				6DB056461C3FFF0F0082806F /* DO */,
+				6DB0564D1C400A8A0082806F /* NSPortMessage */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -249,6 +258,7 @@
 				6DB056341C3FF5C70082806F /* NSXPCConnection */,
 				6DB056351C3FF5D30082806F /* xpc */,
 				6DB056401C3FFEDE0082806F /* DO */,
+				6DB0564A1C400A550082806F /* NSPortMessage */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -277,6 +287,32 @@
 				6DB056481C3FFF1C0082806F /* ClientDistributedObjects.m */,
 			);
 			name = DO;
+			sourceTree = "<group>";
+		};
+		6DB0564A1C400A550082806F /* NSPortMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6DB0564B1C400A710082806F /* SharedNSPortMessage.h */,
+			);
+			name = NSPortMessage;
+			sourceTree = "<group>";
+		};
+		6DB0564C1C400A7C0082806F /* NSPortMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6DB0564E1C400AA00082806F /* ServerNSPortMessage.h */,
+				6DB0564F1C400AA00082806F /* ServerNSPortMessage.m */,
+			);
+			name = NSPortMessage;
+			sourceTree = "<group>";
+		};
+		6DB0564D1C400A8A0082806F /* NSPortMessage */ = {
+			isa = PBXGroup;
+			children = (
+				6DB056511C400AB10082806F /* ClientNSPortMessage.h */,
+				6DB056521C400AB10082806F /* ClientNSPortMessage.m */,
+			);
+			name = NSPortMessage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +393,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DB055F51C3FDE020082806F /* Assets.xcassets in Resources */,
+				6DB056551C401DA40082806F /* goobypls.jpg in Resources */,
 				6DB055F81C3FDE020082806F /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -378,6 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DB056501C400AA00082806F /* ServerNSPortMessage.m in Sources */,
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
 				6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */,
 				6DB056271C3FEB130082806F /* ServerNSXPCConnection.m in Sources */,
@@ -394,6 +431,7 @@
 				6DB0560B1C3FDE610082806F /* main.m in Sources */,
 				6DB0562B1C3FEEDD0082806F /* ClientNSXPCConnection.m in Sources */,
 				6DB056081C3FDE610082806F /* ClientApplication.m in Sources */,
+				6DB056531C400AB10082806F /* ClientNSPortMessage.m in Sources */,
 				6DB056491C3FFF1C0082806F /* ClientDistributedObjects.m in Sources */,
 				6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */,
 				6DB0561F1C3FE8CE0082806F /* Shared.m in Sources */,

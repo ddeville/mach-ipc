@@ -28,7 +28,7 @@
     NSConnection *connection = [NSConnection connectionWithReceivePort:[NSPort port] sendPort:nil];
     connection.rootObject = self;
     
-    [connection registerName:DistributedObjectsName];
+    [connection registerName:DistributedObjectsServiceName];
 
     self.connection = connection;
 }
@@ -38,7 +38,7 @@
 - (NSData *)requestImage:(NSString *)request
 {
     NSImage *image = self.requestHandler(request);
-    return [NSKeyedArchiver archivedDataWithRootObject:image];
+    return image.TIFFRepresentation;
 }
 
 @end

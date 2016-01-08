@@ -1,15 +1,15 @@
 //
-//  ClientXPC.h
+//  ClientNSPortMessage.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 #import "Client.h"
 
-@interface ClientXPC : NSObject <Client>
+@interface ClientNSPortMessage : NSObject <Client>
 
 @end
