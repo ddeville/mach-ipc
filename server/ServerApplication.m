@@ -1,20 +1,20 @@
 //
-//  AppDelegate.m
+//  ServerApplication.m
 //  Server
 //
 //  Created by Damien DeVille on 1/8/16.
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "ServerApplication.h"
 
-@interface AppDelegate ()
+@interface ServerApplication ()
 
 @property (weak) IBOutlet NSWindow *window;
 
 @end
 
-@implementation AppDelegate
+@implementation ServerApplication
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {

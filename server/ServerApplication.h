@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ServerApplication.h
 //  Server
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface ServerApplication : NSObject <NSApplicationDelegate>
 
 @end

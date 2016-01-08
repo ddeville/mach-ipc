@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6DB055F01C3FDE020082806F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055EF1C3FDE020082806F /* AppDelegate.m */; };
+		6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055EF1C3FDE020082806F /* ServerApplication.m */; };
 		6DB055F31C3FDE020082806F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055F21C3FDE020082806F /* main.m */; };
 		6DB055F51C3FDE020082806F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB055F41C3FDE020082806F /* Assets.xcassets */; };
 		6DB055F81C3FDE020082806F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB055F61C3FDE020082806F /* MainMenu.xib */; };
-		6DB056081C3FDE610082806F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056071C3FDE610082806F /* AppDelegate.m */; };
+		6DB056081C3FDE610082806F /* ClientApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056071C3FDE610082806F /* ClientApplication.m */; };
 		6DB0560B1C3FDE610082806F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0560A1C3FDE610082806F /* main.m */; };
 		6DB0560D1C3FDE610082806F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0560C1C3FDE610082806F /* Assets.xcassets */; };
 		6DB056101C3FDE610082806F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB0560E1C3FDE610082806F /* MainMenu.xib */; };
@@ -19,15 +19,15 @@
 
 /* Begin PBXFileReference section */
 		6DB055EB1C3FDE020082806F /* server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = server.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DB055EE1C3FDE020082806F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6DB055EF1C3FDE020082806F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6DB055EE1C3FDE020082806F /* ServerApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerApplication.h; sourceTree = "<group>"; };
+		6DB055EF1C3FDE020082806F /* ServerApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerApplication.m; sourceTree = "<group>"; };
 		6DB055F21C3FDE020082806F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DB055F41C3FDE020082806F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DB055F71C3FDE020082806F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		6DB055F91C3FDE020082806F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6DB056041C3FDE610082806F /* client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = client.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DB056061C3FDE610082806F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6DB056071C3FDE610082806F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6DB056061C3FDE610082806F /* ClientApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClientApplication.h; sourceTree = "<group>"; };
+		6DB056071C3FDE610082806F /* ClientApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClientApplication.m; sourceTree = "<group>"; };
 		6DB0560A1C3FDE610082806F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DB0560C1C3FDE610082806F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6DB0560F1C3FDE610082806F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -74,8 +74,8 @@
 		6DB055ED1C3FDE020082806F /* server */ = {
 			isa = PBXGroup;
 			children = (
-				6DB055EE1C3FDE020082806F /* AppDelegate.h */,
-				6DB055EF1C3FDE020082806F /* AppDelegate.m */,
+				6DB055EE1C3FDE020082806F /* ServerApplication.h */,
+				6DB055EF1C3FDE020082806F /* ServerApplication.m */,
 				6DB055F11C3FDE020082806F /* Supporting Files */,
 				6DB055FF1C3FDE500082806F /* Resources */,
 			);
@@ -104,8 +104,8 @@
 		6DB056051C3FDE610082806F /* client */ = {
 			isa = PBXGroup;
 			children = (
-				6DB056061C3FDE610082806F /* AppDelegate.h */,
-				6DB056071C3FDE610082806F /* AppDelegate.m */,
+				6DB056061C3FDE610082806F /* ClientApplication.h */,
+				6DB056071C3FDE610082806F /* ClientApplication.m */,
 				6DB056091C3FDE610082806F /* Supporting Files */,
 				6DB056151C3FDE710082806F /* Resources */,
 			);
@@ -237,7 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
-				6DB055F01C3FDE020082806F /* AppDelegate.m in Sources */,
+				6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB0560B1C3FDE610082806F /* main.m in Sources */,
-				6DB056081C3FDE610082806F /* AppDelegate.m in Sources */,
+				6DB056081C3FDE610082806F /* ClientApplication.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

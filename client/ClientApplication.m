@@ -1,20 +1,20 @@
 //
-//  AppDelegate.m
+//  ClientApplication.m
 //  client
 //
 //  Created by Damien DeVille on 1/8/16.
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "ClientApplication.h"
 
-@interface AppDelegate ()
+@interface ClientApplication ()
 
 @property (weak) IBOutlet NSWindow *window;
 
 @end
 
-@implementation AppDelegate
+@implementation ClientApplication
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {

@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  ClientApplication.h
 //  client
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -8,6 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface ClientApplication : NSObject <NSApplicationDelegate>
 
 @end
