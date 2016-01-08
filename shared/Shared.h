@@ -14,10 +14,10 @@ enum connection_type {
     connection_type_distributed_objects = 2,
     connection_type_ns_port_message = 3,
     connection_type_cf_message_port = 4,
-    connection_type_mach_mig = 6,
-    connection_type_mach = 7,
-    connection_type_unix_socket_sync = 8,
-    connection_type_unix_socket_async = 9,
+    connection_type_mach_mig = 5,
+    connection_type_mach = 6,
+    connection_type_unix_socket_sync = 7,
+    connection_type_unix_socket_async = 8,
 };
 typedef enum connection_type connection_type;
 
