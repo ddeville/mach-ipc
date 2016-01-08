@@ -35,6 +35,8 @@
 		6DB0568E1C402CE60082806F /* ClientMach.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0568D1C402CE60082806F /* ClientMach.m */; };
 		6DB056911C402CF10082806F /* ClientSocketSync.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056901C402CF10082806F /* ClientSocketSync.m */; };
 		6DB056941C402CF90082806F /* ClientSocketAsync.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056931C402CF90082806F /* ClientSocketAsync.m */; };
+		6DB056961C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; };
+		6DB056971C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +103,7 @@
 		6DB056901C402CF10082806F /* ClientSocketSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSocketSync.m; sourceTree = "<group>"; };
 		6DB056921C402CF90082806F /* ClientSocketAsync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSocketAsync.h; sourceTree = "<group>"; };
 		6DB056931C402CF90082806F /* ClientSocketAsync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSocketAsync.m; sourceTree = "<group>"; };
+		6DB056951C4030110082806F /* shared_mig.defs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.mig; name = shared_mig.defs; path = shared/shared_mig.defs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,6 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				6DB0566D1C402BF90082806F /* SharedMIG.h */,
+				6DB056951C4030110082806F /* shared_mig.defs */,
 			);
 			name = MIG;
 			sourceTree = "<group>";
@@ -596,6 +600,7 @@
 			files = (
 				6DB056501C400AA00082806F /* ServerNSPortMessage.m in Sources */,
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
+				6DB056961C4030110082806F /* shared_mig.defs in Sources */,
 				6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */,
 				6DB0565A1C401F630082806F /* ServerCFMessagePort.m in Sources */,
 				6DB056851C402CC80082806F /* ServerSocketSync.m in Sources */,
@@ -615,6 +620,7 @@
 			files = (
 				6DB056941C402CF90082806F /* ClientSocketAsync.m in Sources */,
 				6DB0560B1C3FDE610082806F /* main.m in Sources */,
+				6DB056971C4030110082806F /* shared_mig.defs in Sources */,
 				6DB0562B1C3FEEDD0082806F /* ClientNSXPCConnection.m in Sources */,
 				6DB056081C3FDE610082806F /* ClientApplication.m in Sources */,
 				6DB0565D1C401F6F0082806F /* ClientCFMessagePort.m in Sources */,
