@@ -26,7 +26,7 @@
     memset(&context, 0, sizeof(CFMessagePortContext));
     context.info = (__bridge void *)self;
 
-    CFMessagePortRef port = CFMessagePortCreateLocal(kCFAllocatorDefault, MessagePortServiceName, messagePortCallBack, &context, NULL);
+    CFMessagePortRef port = CFMessagePortCreateLocal(kCFAllocatorDefault, MessagePortSyncServiceName, messagePortCallBack, &context, NULL);
     self.port = port;
 
     CFRunLoopSourceRef source = CFMessagePortCreateRunLoopSource(kCFAllocatorDefault, port, 0);
@@ -35,7 +35,7 @@
 
 CFDataRef messagePortCallBack(CFMessagePortRef local, SInt32 msgid, CFDataRef data, void *info)
 {
-    if (msgid != MessagePortRequestImageId) {
+    if (msgid != MessagePortSyncRequestImageId) {
         return NULL;
     }
 
