@@ -74,8 +74,7 @@
 		6DB055ED1C3FDE020082806F /* server */ = {
 			isa = PBXGroup;
 			children = (
-				6DB055EE1C3FDE020082806F /* ServerApplication.h */,
-				6DB055EF1C3FDE020082806F /* ServerApplication.m */,
+				6DB056171C3FE5170082806F /* src */,
 				6DB055F11C3FDE020082806F /* Supporting Files */,
 				6DB055FF1C3FDE500082806F /* Resources */,
 			);
@@ -104,8 +103,7 @@
 		6DB056051C3FDE610082806F /* client */ = {
 			isa = PBXGroup;
 			children = (
-				6DB056061C3FDE610082806F /* ClientApplication.h */,
-				6DB056071C3FDE610082806F /* ClientApplication.m */,
+				6DB056181C3FE5220082806F /* src */,
 				6DB056091C3FDE610082806F /* Supporting Files */,
 				6DB056151C3FDE710082806F /* Resources */,
 			);
@@ -135,6 +133,24 @@
 			children = (
 			);
 			name = shared;
+			sourceTree = "<group>";
+		};
+		6DB056171C3FE5170082806F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6DB055EE1C3FDE020082806F /* ServerApplication.h */,
+				6DB055EF1C3FDE020082806F /* ServerApplication.m */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		6DB056181C3FE5220082806F /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6DB056061C3FDE610082806F /* ClientApplication.h */,
+				6DB056071C3FDE610082806F /* ClientApplication.m */,
+			);
+			name = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
