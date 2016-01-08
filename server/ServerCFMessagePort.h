@@ -1,5 +1,5 @@
 //
-//  ClientCFMessagePortAsync.h
+//  ServerCFMessagePort.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Client.h"
+#import "Server.h"
 
-@interface ClientCFMessagePortAsync : NSObject <Client>
+@interface ServerCFMessagePort : NSObject <Server>
 
 @end

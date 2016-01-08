@@ -1,22 +1,22 @@
 //
-//  ServerCFMessagePortSync.m
+//  ServerCFMessagePort.m
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-#import "ServerCFMessagePortSync.h"
+#import "ServerCFMessagePort.h"
 
-#import "SharedCFMessagePortSync.h"
+#import "SharedCFMessagePort.h"
 
-@interface ServerCFMessagePortSync ()
+@interface ServerCFMessagePort ()
 
 @property (strong, nonatomic) __attribute__((NSObject)) CFMessagePortRef port;
 
 @end
 
-@implementation ServerCFMessagePortSync
+@implementation ServerCFMessagePort
 
 @synthesize requestHandler = _requestHandler;
 
@@ -26,7 +26,7 @@
     memset(&context, 0, sizeof(CFMessagePortContext));
     context.info = (__bridge void *)self;
 
-    CFMessagePortRef port = CFMessagePortCreateLocal(kCFAllocatorDefault, MessagePortSyncServiceName, messagePortCallBack, &context, NULL);
+    CFMessagePortRef port = CFMessagePortCreateLocal(kCFAllocatorDefault, MessagePortServiceName, messagePortCallBack, &context, NULL);
     self.port = port;
 
     CFRunLoopSourceRef source = CFMessagePortCreateRunLoopSource(kCFAllocatorDefault, port, 0);
@@ -35,11 +35,11 @@
 
 CFDataRef messagePortCallBack(CFMessagePortRef local, SInt32 msgid, CFDataRef data, void *info)
 {
-    if (msgid != MessagePortSyncRequestImageId) {
+    if (msgid != MessagePortRequestImageId) {
         return NULL;
     }
 
-    ServerCFMessagePortSync *self = (__bridge ServerCFMessagePortSync *)info;
+    ServerCFMessagePort *self = (__bridge ServerCFMessagePort *)info;
     if (self == nil) {
         return nil;
     }

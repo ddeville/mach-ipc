@@ -1,5 +1,5 @@
 //
-//  ClientCFMessagePortSync.h
+//  ClientCFMessagePort.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -10,6 +10,6 @@
 
 #import "Client.h"
 
-@interface ClientCFMessagePortSync : NSObject <Client>
+@interface ClientCFMessagePort : NSObject <Client>
 
 @end

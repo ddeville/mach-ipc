@@ -13,22 +13,21 @@ enum connection_type {
     connection_type_xpc = 1,
     connection_type_distributed_objects = 2,
     connection_type_ns_port_message = 3,
-    connection_type_cf_message_port_sync = 4,
-    connection_type_cf_message_port_async = 5,
+    connection_type_cf_message_port = 4,
     connection_type_mach_mig = 6,
     connection_type_mach = 7,
     connection_type_unix_socket = 8,
 };
 typedef enum connection_type connection_type;
 
-#define CONNECTION_TYPE connection_type_cf_message_port_sync
+#define CONNECTION_TYPE connection_type_cf_message_port
 
 static NSString *ServerClasses[] = {
     @"ServerNSXPCConnection",
     @"ServerXPC",
     @"ServerDistributedObjects",
     @"ServerNSPortMessage",
-    @"ServerCFMessagePortSync",
+    @"ServerCFMessagePort",
 };
 
 static NSString *ClientClasses[] = {
@@ -36,5 +35,5 @@ static NSString *ClientClasses[] = {
     @"ClientXPC",
     @"ClientDistributedObjects",
     @"ClientNSPortMessage",
-    @"ClientCFMessagePortSync",
+    @"ClientCFMessagePort",
 };
