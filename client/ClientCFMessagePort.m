@@ -32,7 +32,7 @@
         return;
     }
 
-    NSImage *image = [[NSImage alloc] initWithData:(__bridge NSData *)imageData];
+    NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:(__bridge NSData *)imageData error:NULL];
 
     completion(image);
 }

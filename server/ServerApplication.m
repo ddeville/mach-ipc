@@ -38,12 +38,20 @@
             [server _appendToLog:[NSString stringWithFormat:@"Received request \"%@\"", request]];
         });
 
-        return [NSImage imageNamed:request];
+        return [[NSBundle mainBundle] imageForResource:request];
     };
 
     [self.server startServer];
 
     [self _appendToLog:@"Server started"];
+    
+    [self _launchClientIfNeeded];
+}
+
+- (void)applicationWillTerminate:(NSNotification *)notification
+{
+    NSRunningApplication *client = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.ddeville.client"].firstObject;
+    [client terminate];
 }
 
 - (void)_appendToLog:(NSString *)string
@@ -62,6 +70,17 @@
     [log appendFormat:@"%@ (%@): %@", time, server, string];
 
     self.log = [[NSAttributedString alloc] initWithString:log attributes:nil];
+}
+
+- (void)_launchClientIfNeeded
+{
+    NSArray *clients = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.ddeville.client"];
+    [clients makeObjectsPerformSelector:@selector(terminate)];
+    
+    NSString *clientPath = [[NSBundle mainBundle] pathForResource:@"client" ofType:@"app"];
+    [[NSWorkspace sharedWorkspace] performSelector:@selector(launchApplication:) withObject:clientPath afterDelay:0.1];
+    
+    [self _appendToLog:@"Launched client"];
 }
 
 @end

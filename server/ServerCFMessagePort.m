@@ -54,7 +54,7 @@ CFDataRef messagePortCallBack(CFMessagePortRef local, SInt32 msgid, CFDataRef da
         return NULL;
     }
 
-    return CFRetain((__bridge CFDataRef)[image TIFFRepresentation]);
+    return CFRetain((__bridge CFDataRef)[NSKeyedArchiver archivedDataWithRootObject:image]);
 }
 
 @end

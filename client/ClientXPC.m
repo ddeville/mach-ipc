@@ -38,7 +38,7 @@
             return;
         }
 
-        NSImage *image = [[NSImage alloc] initWithData:imageData];
+        NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:imageData error:NULL];
         if (image == nil) {
             return;
         }

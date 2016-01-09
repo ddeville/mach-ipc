@@ -38,7 +38,7 @@
 - (NSData *)requestImage:(NSString *)request
 {
     NSImage *image = self.requestHandler(request);
-    return image.TIFFRepresentation;
+    return [NSKeyedArchiver archivedDataWithRootObject:image];
 }
 
 @end

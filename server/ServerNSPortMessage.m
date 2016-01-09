@@ -55,7 +55,7 @@
         return;
     }
 
-    NSData *imageData = image.TIFFRepresentation;
+    NSData *imageData = [NSKeyedArchiver archivedDataWithRootObject:image];
 
     NSPortMessage *replyMessage = [[NSPortMessage alloc] initWithSendPort:message.sendPort receivePort:nil components:@[nameData, imageData]];
     replyMessage.msgid = PortMessageResponseImageId;

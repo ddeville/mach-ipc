@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D0A32B01C4081B300C7D43F /* client.app in Resources */ = {isa = PBXBuildFile; fileRef = 6DB056041C3FDE610082806F /* client.app */; };
 		6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055EF1C3FDE020082806F /* ServerApplication.m */; };
 		6DB055F31C3FDE020082806F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055F21C3FDE020082806F /* main.m */; };
 		6DB055F81C3FDE020082806F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB055F61C3FDE020082806F /* MainMenu.xib */; };
@@ -38,6 +39,16 @@
 		6DB056961C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; };
 		6DB056971C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D0A32AE1C4081AC00C7D43F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6DB055E31C3FDE020082806F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6DB056031C3FDE610082806F;
+			remoteInfo = client;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		6DB055EB1C3FDE020082806F /* server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = server.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -513,6 +524,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6D0A32AF1C4081AC00C7D43F /* PBXTargetDependency */,
 			);
 			name = server;
 			productName = Server;
@@ -577,6 +589,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D0A32B01C4081B300C7D43F /* client.app in Resources */,
 				6DB056551C401DA40082806F /* goobypls.jpg in Resources */,
 				6DB055F81C3FDE020082806F /* MainMenu.xib in Resources */,
 			);
@@ -635,6 +648,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D0A32AF1C4081AC00C7D43F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6DB056031C3FDE610082806F /* client */;
+			targetProxy = 6D0A32AE1C4081AC00C7D43F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6DB055F61C3FDE020082806F /* MainMenu.xib */ = {

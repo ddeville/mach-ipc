@@ -61,7 +61,7 @@
         return;
     }
 
-    NSData *imageData = image.TIFFRepresentation;
+    NSData *imageData = [NSKeyedArchiver archivedDataWithRootObject:image];
     if (imageData == nil) {
         return;
     }
