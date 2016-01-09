@@ -6,4 +6,12 @@
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
+/*
+    See these docs to learn more about MIG:
+    
+    http://www.cs.cmu.edu/afs/cs/project/mach/public/doc/unpublished/mig.ps
+    http://shakthimaan.com/downloads/hurd/server_interface.pdf
+    http://shakthimaan.com/downloads/hurd/server_writer.pdf
+ */
+
 subsystem shared_mig 22222;
