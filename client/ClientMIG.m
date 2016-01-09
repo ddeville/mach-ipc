@@ -9,6 +9,7 @@
 #import "ClientMIG.h"
 
 #import "SharedMIG.h"
+#import "shared_mig.h"
 
 @implementation ClientMIG
 
