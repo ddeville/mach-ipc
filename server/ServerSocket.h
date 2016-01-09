@@ -1,5 +1,5 @@
 //
-//  ClientSocketAsync.h
+//  ServerSocket.h
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Client.h"
+#import "Server.h"
 
-@interface ClientSocketAsync : NSObject <Client>
+@interface ServerSocket : NSObject <Server>
 
 @end

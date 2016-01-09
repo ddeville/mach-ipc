@@ -1,16 +1,16 @@
 //
-//  ClientSocketAsync.m
+//  ClientSocket.m
 //  ipc
 //
 //  Created by Damien DeVille on 1/8/16.
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-#import "ClientSocketAsync.h"
+#import "ClientSocket.h"
 
-#import "SharedSocketAsync.h"
+#import "SharedSocket.h"
 
-@implementation ClientSocketAsync
+@implementation ClientSocket
 
 - (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
 {

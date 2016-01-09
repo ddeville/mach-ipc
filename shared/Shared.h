@@ -16,8 +16,7 @@ enum connection_type {
     connection_type_cf_message_port = 4,
     connection_type_mach_mig = 5,
     connection_type_mach = 6,
-    connection_type_unix_socket_sync = 7,
-    connection_type_unix_socket_async = 8,
+    connection_type_unix_socket = 7,
 };
 typedef enum connection_type connection_type;
 
@@ -31,8 +30,7 @@ static NSString *ServerClasses[] = {
     @"ServerCFMessagePort",
     @"ServerMIG",
     @"ServerMach",
-    @"ServerSocketSync",
-    @"ServerSocketAsync",
+    @"ServerSocket",
 };
 
 static NSString *ClientClasses[] = {
@@ -43,6 +41,5 @@ static NSString *ClientClasses[] = {
     @"ClientCFMessagePort",
     @"ClientMIG",
     @"ClientMach",
-    @"ClientSocketSync",
-    @"ClientSocketAsync",
+    @"ClientSocket",
 };
