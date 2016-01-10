@@ -20,7 +20,7 @@ enum connection_type {
 };
 typedef enum connection_type connection_type;
 
-#define CONNECTION_TYPE connection_type_distributed_objects
+#define CONNECTION_TYPE connection_type_mach
 
 static NSString *ServerClasses[] = {
     @"ServerNSXPCConnection",

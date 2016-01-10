@@ -49,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D0A32BA1C41B4AA00C7D43F /* shared_mig_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = shared_mig_types.h; path = shared/shared_mig_types.h; sourceTree = "<group>"; };
 		6DB055EB1C3FDE020082806F /* server.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = server.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DB055EE1C3FDE020082806F /* ServerApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ServerApplication.h; sourceTree = "<group>"; };
 		6DB055EF1C3FDE020082806F /* ServerApplication.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ServerApplication.m; sourceTree = "<group>"; };
@@ -399,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				6DB0566D1C402BF90082806F /* SharedMIG.h */,
+				6D0A32BA1C41B4AA00C7D43F /* shared_mig_types.h */,
 				6DB056951C4030110082806F /* shared_mig.defs */,
 			);
 			name = MIG;
