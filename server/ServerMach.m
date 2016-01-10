@@ -69,6 +69,9 @@
     }
     
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:image];
+    if (data == nil) {
+        return;
+    }
     
     mach_response_msg_t response;
     memset(&response, 0, sizeof(mach_response_msg_t));
