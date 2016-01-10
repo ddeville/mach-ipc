@@ -53,30 +53,55 @@
 
 - (void)_handleRequest
 {
-    mach_msg_header_t *msg = (mach_msg_header_t *)calloc(1, 2048);
-    msg->msgh_size = 2048;
+    mach_request_msg_t *request = (mach_request_msg_t *)calloc(1, 2048);
+    request->header.msgh_size = 2048;
     
     while (1) {
-        msg->msgh_bits = 0;
-        msg->msgh_local_port = self.port;
-        msg->msgh_remote_port = MACH_PORT_NULL;
-        msg->msgh_id = 0;
+        request->header.msgh_bits = 0;
+        request->header.msgh_local_port = self.port;
+        request->header.msgh_remote_port = MACH_PORT_NULL;
+        request->header.msgh_id = 0;
         
         mach_msg_option_t options = (MACH_RCV_MSG | MACH_RCV_LARGE | MACH_RCV_TRAILER_TYPE(MACH_MSG_TRAILER_FORMAT_0) | MACH_RCV_TRAILER_ELEMENTS(MACH_RCV_TRAILER_AV));
-        kern_return_t ret = mach_msg(msg, options, 0, msg->msgh_size, self.port, 0, MACH_PORT_NULL);
+        kern_return_t ret = mach_msg(&request->header, options, 0, request->header.msgh_size, self.port, 0, MACH_PORT_NULL);
         if (ret == MACH_MSG_SUCCESS) {
             break;
         }
         assert(ret != MACH_RCV_TOO_LARGE);
         
-        uint32_t size = round_msg(msg->msgh_size + MAX_TRAILER_SIZE);
-        msg = realloc(msg, size);
-        msg->msgh_size = size;
+        uint32_t size = round_msg(request->header.msgh_size + MAX_TRAILER_SIZE);
+        request = realloc(request, size);
+        request->header.msgh_size = size;
     }
     
-    dispatch_async(self.queue, ^{
-        
-    });
+    mach_port_t reply_port = request->header.msgh_remote_port;
+    if (reply_port == MACH_PORT_NULL) {
+        return;
+    }
+    
+    NSString *name = [NSString stringWithUTF8String:request->request];
+    if (name == nil) {
+        return;
+    }
+    
+    NSImage *image = self.requestHandler(name);
+    if (image == nil) {
+        return;
+    }
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:image];
+    
+    mach_response_msg_t *response = (mach_response_msg_t *)calloc(1, sizeof(mach_msg_header_t) + sizeof(size_t) + data.length);
+    response->data_size = data.length;
+    memcpy(response->data, data.bytes, data.length);
+    
+    response->header.msgh_bits = MACH_MSGH_BITS(MACH_MSG_TYPE_COPY_SEND, MACH_MSG_TYPE_MAKE_SEND);
+    response->header.msgh_size = (mach_msg_size_t)(sizeof(mach_msg_header_t) + sizeof(size_t) + data.length);
+    response->header.msgh_remote_port = reply_port;
+    response->header.msgh_local_port = MACH_PORT_NULL;
+    response->header.msgh_id = mach_message_request_image_id;
+    
+    kern_return_t ret = mach_msg(&response->header, MACH_SEND_MSG, response->header.msgh_size, 0, MACH_PORT_NULL, MACH_MSG_TIMEOUT_NONE, MACH_PORT_NULL);
 }
 
 @end
