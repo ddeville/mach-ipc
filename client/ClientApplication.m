@@ -16,6 +16,7 @@
 
 @property (copy, nonatomic) NSAttributedString *log;
 @property (copy, nonatomic) NSImage *image;
+@property (assign, nonatomic) BOOL loading;
 
 @end
 
@@ -37,9 +38,13 @@
 - (IBAction)requestImage:(id)sender
 {
     [self _appendToLog:@"Requesting image"];
+    
+    self.image = nil;
+    self.loading = YES;
 
     [self.client requestImage:@"goobypls" completion:^(NSImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
+            self.loading = NO;
             self.image = image;
 
             [self _appendToLog:[NSString stringWithFormat:@"Received image %@", image]];

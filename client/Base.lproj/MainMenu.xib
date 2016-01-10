@@ -733,6 +733,12 @@
                             <action selector="requestImage:" target="Voe-Tx-rLC" id="T08-LH-MwK"/>
                         </connections>
                     </button>
+                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="bwS-yX-7RR">
+                        <rect key="frame" x="232" y="178" width="16" height="16"/>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="animate" keyPath="self.loading" id="Svo-XS-5a6"/>
+                        </connections>
+                    </progressIndicator>
                 </subviews>
                 <constraints>
                     <constraint firstItem="106-0o-6fT" firstAttribute="top" secondItem="heu-vz-wrg" secondAttribute="bottom" constant="20" id="7r6-34-Lgb"/>
