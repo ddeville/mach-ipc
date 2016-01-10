@@ -90,7 +90,10 @@
     response.data.size = (mach_msg_size_t)data.length;
     response.data.deallocate = false;
     
-    mach_msg(&response.header, MACH_SEND_MSG, response.header.msgh_size, 0, MACH_PORT_NULL, MACH_MSG_TIMEOUT_NONE, MACH_PORT_NULL);
+    kern_return_t sent = mach_msg(&response.header, MACH_SEND_MSG, response.header.msgh_size, 0, MACH_PORT_NULL, MACH_MSG_TIMEOUT_NONE, MACH_PORT_NULL);
+    if (sent != MACH_MSG_SUCCESS) {
+        return;
+    }
 }
 
 @end
