@@ -22,7 +22,7 @@
 
 - (void)startServer
 {
-    // NSConnection needs a service runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
+    // NSConnection needs a serviced runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
     NSAssert([NSThread isMainThread], @"The server needs a serviced runloop and should be started on the main thread");
 
     NSConnection *connection = [NSConnection connectionWithReceivePort:[NSPort port] sendPort:nil];

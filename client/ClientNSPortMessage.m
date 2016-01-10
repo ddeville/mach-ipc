@@ -40,7 +40,7 @@
 
 - (void)requestImage:(NSString *)name completion:(void (^)(NSImage *))completion
 {
-    // NSPortMessage needs a service runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
+    // NSPortMessage needs a serviced runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
     NSAssert([NSThread isMainThread], @"The client needs a serviced runloop and should be called on the main thread");
     
     NSPort *serverPort = [[NSMachBootstrapServer sharedInstance] portForName:PortMessageServiceName];
