@@ -35,7 +35,7 @@
     
     self.port = port;
     
-    // monitor the port for receive events asynchronously via a dispatch source (rather than blocking on `mach_msg`)
+    // monitor the port for recv events asynchronously via a dispatch source (rather than blocking on `mach_msg`)
     dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_MACH_RECV, port, 0, dispatch_get_main_queue());
     self.source = source;
     
