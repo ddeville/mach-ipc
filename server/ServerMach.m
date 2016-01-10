@@ -16,8 +16,6 @@
 @interface ServerMach ()
 
 @property (assign, nonatomic) mach_port_t port;
-
-@property (strong, nonatomic) dispatch_queue_t queue;
 @property (strong, nonatomic) dispatch_source_t source;
 
 @end
@@ -36,17 +34,14 @@
     
     self.port = port;
     
-    dispatch_queue_attr_t queue_attr = dispatch_queue_attr_make_with_qos_class(DISPATCH_QUEUE_SERIAL, qos_class_main(), 0);
-    dispatch_queue_t queue = dispatch_queue_create("com.ddeville.ipc.mach", queue_attr);
-    self.queue = queue;
+    dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_MACH_RECV, port, 0, dispatch_get_main_queue());
+    self.source = source;
     
-    dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_MACH_RECV, port, 0, queue);
     __weak ServerMach *weakSelf = self;
     dispatch_source_set_event_handler(source, ^{
         __strong ServerMach *server = weakSelf;
         [server _handleRequest];
     });
-    self.source = source;
     dispatch_resume(source);
 }
 
