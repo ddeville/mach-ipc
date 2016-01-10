@@ -15,7 +15,7 @@
 
 @interface ClientMach ()
 
-@property (strong, nonatomic) NSMutableDictionary *sourceQueue;
+@property (strong, nonatomic) NSMutableDictionary *inflightSources;
 
 @end
 
@@ -28,76 +28,52 @@
         return nil;
     }
     
-    _sourceQueue = [NSMutableDictionary dictionary];
+    _inflightSources = [NSMutableDictionary dictionary];
     
     return self;
 }
 
 - (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
 {
-    kern_return_t ret;
-    
-    mach_port_t bs = bootstrap_port;
-    
     mach_port_t server_port;
-    ret = bootstrap_look_up(bs, mach_service_name, &server_port);
-    
-    if (ret != BOOTSTRAP_SUCCESS) {
+    kern_return_t looked_up = bootstrap_look_up(bootstrap_port, mach_service_name, &server_port);
+    if (looked_up != BOOTSTRAP_SUCCESS) {
         return;
     }
     
     mach_port_t client_port;
-    ret = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &client_port);
-    
-    if (ret != BOOTSTRAP_SUCCESS) {
+    kern_return_t allocated = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &client_port);
+    if (allocated != BOOTSTRAP_SUCCESS) {
         return;
     }
     
-    mach_request_msg_t send_msg;
-    memset(&send_msg, 0, sizeof(mach_request_msg_t));
+    mach_request_msg_t request;
+    request.header.msgh_bits = MACH_MSGH_BITS(MACH_MSG_TYPE_COPY_SEND, MACH_MSG_TYPE_MAKE_SEND);
+    request.header.msgh_size = sizeof(mach_request_msg_t);
+    request.header.msgh_remote_port = server_port;
+    request.header.msgh_local_port = client_port;
+    request.header.msgh_id = mach_message_request_image_id;
     
-    send_msg.header.msgh_bits = MACH_MSGH_BITS(MACH_MSG_TYPE_COPY_SEND, MACH_MSG_TYPE_MAKE_SEND);
-    send_msg.header.msgh_size = sizeof(send_msg);
-    send_msg.header.msgh_remote_port = server_port;
-    send_msg.header.msgh_local_port = client_port;
-    send_msg.header.msgh_id = mach_message_request_image_id;
+    strncpy(request.filename, name.UTF8String, PATH_MAX);
     
-    strncpy(send_msg.request, name.UTF8String, PATH_MAX);
-    
-    ret = mach_msg(&send_msg.header, MACH_SEND_MSG, send_msg.header.msgh_size, 0, MACH_PORT_NULL, MACH_MSG_TIMEOUT_NONE, MACH_PORT_NULL);
-    if (ret != MACH_MSG_SUCCESS) {
+    kern_return_t sent = mach_msg(&request.header, MACH_SEND_MSG, request.header.msgh_size, 0, MACH_PORT_NULL, MACH_MSG_TIMEOUT_NONE, MACH_PORT_NULL);
+    if (sent != MACH_MSG_SUCCESS) {
         return;
     }
     
     dispatch_source_t source = dispatch_source_create(DISPATCH_SOURCE_TYPE_MACH_RECV, client_port, 0, dispatch_get_main_queue());
     dispatch_source_set_event_handler(source, ^{
-        mach_response_msg_t *request = (mach_response_msg_t *)calloc(1, 2048);
-        request->header.msgh_size = 2048;
+        mach_response_receiver_msg_t response;
+        response.header.msgh_size = sizeof(mach_response_receiver_msg_t);
+        response.header.msgh_local_port = client_port;
         
-        while (1) {
-            request->header.msgh_bits = 0;
-            request->header.msgh_local_port = client_port;
-            request->header.msgh_remote_port = MACH_PORT_NULL;
-            request->header.msgh_id = 0;
-            
-            mach_msg_option_t options = (MACH_RCV_MSG | MACH_RCV_LARGE | MACH_RCV_TRAILER_TYPE(MACH_MSG_TRAILER_FORMAT_0) | MACH_RCV_TRAILER_ELEMENTS(MACH_RCV_TRAILER_AV));
-            kern_return_t ret = mach_msg(&request->header, options, 0, request->header.msgh_size, client_port, 0, MACH_PORT_NULL);
-            if (ret == MACH_MSG_SUCCESS) {
-                break;
-            }
-            if (ret == MACH_RCV_TOO_LARGE) {
-                return;
-            }
-            
-            uint32_t size = round_msg(request->header.msgh_size + MAX_TRAILER_SIZE);
-            request = realloc(request, size);
-            request->header.msgh_size = size;
+        kern_return_t received = mach_msg(&response.header, MACH_RCV_MSG, 0, response.header.msgh_size, client_port, 0, MACH_PORT_NULL);
+        mach_port_deallocate(mach_task_self(), client_port);
+        if (received != MACH_MSG_SUCCESS) {
+            return;
         }
         
-        __unused dispatch_source_t strongSource = self.sourceQueue[name];
-        [self.sourceQueue removeObjectForKey:name];
-        
-        NSData *data = [NSData dataWithBytes:request->data length:request->data_size];
+        NSData *data = [NSData dataWithBytes:response.data.address length:response.data.size];
         if (data == nil) {
             return;
         }
@@ -108,10 +84,13 @@
         }
         
         completion(image);
+        
+        [self.inflightSources removeObjectForKey:name];
     });
     dispatch_resume(source);
     
-    [self.sourceQueue setObject:source forKey:name];
+    // add the source to a map on the object so that ARC doesn't dealloc it while we're waiting for events...
+    [self.inflightSources setObject:source forKey:name];
 }
 
 @end
