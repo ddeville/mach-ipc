@@ -12,6 +12,8 @@
 #import "Server.h"
 #import "ServerNSXPCConnection.h"
 
+#define MANAGE_CLIENT   0
+
 @interface ServerApplication (/* Bindings */)
 
 @property (copy, nonatomic) NSAttributedString *log;
@@ -45,13 +47,17 @@
 
     [self _appendToLog:@"Server started"];
     
+#if MANAGE_CLIENT
     [self _launchClientIfNeeded];
+#endif /* MANAGE_CLIENT */
 }
 
 - (void)applicationWillTerminate:(NSNotification *)notification
 {
+#if MANAGE_CLIENT
     NSRunningApplication *client = [NSRunningApplication runningApplicationsWithBundleIdentifier:@"com.ddeville.client"].firstObject;
     [client terminate];
+#endif /* MANAGE_CLIENT */
 }
 
 - (void)_appendToLog:(NSString *)string
