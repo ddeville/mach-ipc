@@ -14,7 +14,7 @@
 
 - (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
 {
-
+    
 }
 
 @end

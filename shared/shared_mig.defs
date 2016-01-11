@@ -17,7 +17,7 @@
 #ifndef	_SHARED_MIG_DEFS_
 #define _SHARED_MIG_DEFS_
 
-subsystem shared_mig 22222;
+subsystem shared_mig 2222;
 
 #include <mach/std_types.defs>
 #include <mach/mach_types.defs>
@@ -25,8 +25,9 @@ subsystem shared_mig 22222;
 type request_input_t = array[256] of char;
 
 routine request_image(
-    server_port : mach_port_t;
-    request     : request_input_t
+        server_port : mach_port_t;
+    in  request     : request_input_t;
+    out data        : pointer_t
 );
 
 import "shared_mig_types.h";

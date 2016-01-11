@@ -12,7 +12,7 @@
 #import "Server.h"
 #import "ServerNSXPCConnection.h"
 
-#define MANAGE_CLIENT   1
+#define MANAGE_CLIENT   0
 
 @interface ServerApplication (/* Bindings */)
 

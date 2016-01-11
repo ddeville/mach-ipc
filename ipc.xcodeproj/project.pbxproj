@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D0A32B01C4081B300C7D43F /* client.app in Resources */ = {isa = PBXBuildFile; fileRef = 6DB056041C3FDE610082806F /* client.app */; };
+		6D0A32D31C445B4D00C7D43F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; settings = {ATTRIBUTES = (Client, ); }; };
 		6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055EF1C3FDE020082806F /* ServerApplication.m */; };
 		6DB055F31C3FDE020082806F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB055F21C3FDE020082806F /* main.m */; };
 		6DB055F81C3FDE020082806F /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DB055F61C3FDE020082806F /* MainMenu.xib */; };
@@ -34,8 +35,7 @@
 		6DB0568B1C402CDF0082806F /* ClientMIG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0568A1C402CDF0082806F /* ClientMIG.m */; };
 		6DB0568E1C402CE60082806F /* ClientMach.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0568D1C402CE60082806F /* ClientMach.m */; };
 		6DB056911C402CF10082806F /* ClientSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056901C402CF10082806F /* ClientSocket.m */; };
-		6DB056961C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; };
-		6DB056971C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; };
+		6DB056961C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; settings = {ATTRIBUTES = (Server, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -579,7 +579,6 @@
 			files = (
 				6DB056501C400AA00082806F /* ServerNSPortMessage.m in Sources */,
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
-				6DB056961C4030110082806F /* shared_mig.defs in Sources */,
 				6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */,
 				6DB0565A1C401F630082806F /* ServerCFMessagePort.m in Sources */,
 				6DB056851C402CC80082806F /* ServerSocket.m in Sources */,
@@ -589,6 +588,7 @@
 				6DB0567C1C402CA80082806F /* ServerMIG.m in Sources */,
 				6DB0561E1C3FE8CE0082806F /* Shared.m in Sources */,
 				6DB0567F1C402CB10082806F /* ServerMach.m in Sources */,
+				6DB056961C4030110082806F /* shared_mig.defs in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +597,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DB0560B1C3FDE610082806F /* main.m in Sources */,
-				6DB056971C4030110082806F /* shared_mig.defs in Sources */,
 				6DB0562B1C3FEEDD0082806F /* ClientNSXPCConnection.m in Sources */,
 				6DB056081C3FDE610082806F /* ClientApplication.m in Sources */,
 				6DB0565D1C401F6F0082806F /* ClientCFMessagePort.m in Sources */,
@@ -608,6 +607,7 @@
 				6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */,
 				6DB0561F1C3FE8CE0082806F /* Shared.m in Sources */,
 				6DB056911C402CF10082806F /* ClientSocket.m in Sources */,
+				6D0A32D31C445B4D00C7D43F /* shared_mig.defs in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
