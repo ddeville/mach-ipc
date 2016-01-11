@@ -46,6 +46,7 @@
     mach_port_t client_port;
     kern_return_t allocated = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &client_port);
     if (allocated != BOOTSTRAP_SUCCESS) {
+        mach_port_deallocate(mach_task_self(), server_port);
         return;
     }
     
@@ -62,7 +63,9 @@
     strncpy(request.filename, name.UTF8String, PATH_MAX);
     
     kern_return_t sent = mach_msg(&request.header, MACH_SEND_MSG, request.header.msgh_size, 0, MACH_PORT_NULL, MACH_MSG_TIMEOUT_NONE, MACH_PORT_NULL);
+    mach_port_deallocate(mach_task_self(), server_port);
     if (sent != MACH_MSG_SUCCESS) {
+        mach_port_deallocate(mach_task_self(), client_port);
         return;
     }
     
@@ -79,9 +82,14 @@
         if (received != MACH_MSG_SUCCESS) {
             return;
         }
+
+        if (response.data.address == NULL) {
+            return;
+        }
         
         // retrieve the data from the response and unarchive it to get the image
         NSData *data = [NSData dataWithBytes:response.data.address length:response.data.size];
+        vm_deallocate(mach_task_self(), (vm_address_t)response.data.address, response.data.size);
         if (data == nil) {
             return;
         }
