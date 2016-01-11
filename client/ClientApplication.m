@@ -37,12 +37,14 @@
 
 - (IBAction)requestImage:(id)sender
 {
-    [self _appendToLog:@"Requesting image"];
+    NSString *filename = @"goobypls";
+    
+    [self _appendToLog:[NSString stringWithFormat:@"Requesting image \"%@\"", filename]];
     
     self.image = nil;
     self.loading = YES;
 
-    [self.client requestImage:@"goobypls" completion:^(NSImage *image) {
+    [self.client requestImage:filename completion:^(NSImage *image) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.loading = NO;
             self.image = image;

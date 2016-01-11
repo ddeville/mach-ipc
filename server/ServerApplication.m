@@ -36,11 +36,14 @@
     self.server.requestHandler = ^NSImage *(NSString *request) {
         __strong ServerApplication *server = weakServer;
 
+        NSImage *image = [[NSBundle mainBundle] imageForResource:request];
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             [server _appendToLog:[NSString stringWithFormat:@"Received request \"%@\"", request]];
+            [server _appendToLog:[NSString stringWithFormat:@"Responding with image %@", image]];
         });
-
-        return [[NSBundle mainBundle] imageForResource:request];
+        
+        return image;
     };
 
     [self.server startServer];
