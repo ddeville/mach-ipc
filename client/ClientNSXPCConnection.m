@@ -21,7 +21,9 @@
     [interface setClasses:[NSSet setWithObject:[NSImage class]] forSelector:@selector(requestImage:completion:) argumentIndex:0 ofReply:YES];
     connection.remoteObjectInterface = interface;
 
-    id <ConnectionProtocol> server = connection.remoteObjectProxy;
+    id <ConnectionProtocol> server = [connection remoteObjectProxyWithErrorHandler:^(NSError *error) {
+        completion(nil, error);
+    }];
 
     [connection resume];
     [server requestImage:name completion:^(NSImage *image) {
