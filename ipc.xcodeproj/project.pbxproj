@@ -31,10 +31,8 @@
 		6DB0565D1C401F6F0082806F /* ClientCFMessagePort.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0565C1C401F6F0082806F /* ClientCFMessagePort.m */; };
 		6DB0567C1C402CA80082806F /* ServerMIG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0567B1C402CA80082806F /* ServerMIG.m */; };
 		6DB0567F1C402CB10082806F /* ServerMach.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0567E1C402CB10082806F /* ServerMach.m */; };
-		6DB056851C402CC80082806F /* ServerSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056841C402CC80082806F /* ServerSocket.m */; };
 		6DB0568B1C402CDF0082806F /* ClientMIG.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0568A1C402CDF0082806F /* ClientMIG.m */; };
 		6DB0568E1C402CE60082806F /* ClientMach.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB0568D1C402CE60082806F /* ClientMach.m */; };
-		6DB056911C402CF10082806F /* ClientSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056901C402CF10082806F /* ClientSocket.m */; };
 		6DB056961C4030110082806F /* shared_mig.defs in Sources */ = {isa = PBXBuildFile; fileRef = 6DB056951C4030110082806F /* shared_mig.defs */; settings = {ATTRIBUTES = (Server, ); }; };
 /* End PBXBuildFile section */
 
@@ -95,19 +93,14 @@
 		6DB0565F1C401F8A0082806F /* SharedCFMessagePort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedCFMessagePort.h; path = shared/SharedCFMessagePort.h; sourceTree = "<group>"; };
 		6DB0566D1C402BF90082806F /* SharedMIG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedMIG.h; path = shared/SharedMIG.h; sourceTree = "<group>"; };
 		6DB0566E1C402C030082806F /* SharedMach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedMach.h; path = shared/SharedMach.h; sourceTree = "<group>"; };
-		6DB056701C402C3A0082806F /* SharedSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedSocket.h; path = shared/SharedSocket.h; sourceTree = "<group>"; };
 		6DB0567A1C402CA80082806F /* ServerMIG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerMIG.h; path = server/ServerMIG.h; sourceTree = SOURCE_ROOT; };
 		6DB0567B1C402CA80082806F /* ServerMIG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerMIG.m; path = server/ServerMIG.m; sourceTree = SOURCE_ROOT; };
 		6DB0567D1C402CB10082806F /* ServerMach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerMach.h; path = server/ServerMach.h; sourceTree = SOURCE_ROOT; };
 		6DB0567E1C402CB10082806F /* ServerMach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerMach.m; path = server/ServerMach.m; sourceTree = SOURCE_ROOT; };
-		6DB056831C402CC80082806F /* ServerSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ServerSocket.h; path = server/ServerSocket.h; sourceTree = SOURCE_ROOT; };
-		6DB056841C402CC80082806F /* ServerSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ServerSocket.m; path = server/ServerSocket.m; sourceTree = SOURCE_ROOT; };
 		6DB056891C402CDF0082806F /* ClientMIG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientMIG.h; sourceTree = "<group>"; };
 		6DB0568A1C402CDF0082806F /* ClientMIG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientMIG.m; sourceTree = "<group>"; };
 		6DB0568C1C402CE60082806F /* ClientMach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientMach.h; sourceTree = "<group>"; };
 		6DB0568D1C402CE60082806F /* ClientMach.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientMach.m; sourceTree = "<group>"; };
-		6DB0568F1C402CF10082806F /* ClientSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientSocket.h; sourceTree = "<group>"; };
-		6DB056901C402CF10082806F /* ClientSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientSocket.m; sourceTree = "<group>"; };
 		6DB056951C4030110082806F /* shared_mig.defs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.mig; name = shared_mig.defs; path = shared/shared_mig.defs; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,7 +219,6 @@
 				6DB056561C401F390082806F /* CFMessagePort */,
 				6DB056721C402C5C0082806F /* MIG */,
 				6DB056731C402C610082806F /* Mach */,
-				6DB056741C402C650082806F /* Socket */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -244,7 +236,6 @@
 				6DB056571C401F4B0082806F /* CFMessagePort */,
 				6DB056761C402C7A0082806F /* MIG */,
 				6DB056771C402C7D0082806F /* Mach */,
-				6DB056781C402C800082806F /* Socket */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -313,7 +304,6 @@
 				6DB0565E1C401F710082806F /* CFMessagePort */,
 				6DB0566A1C402BBE0082806F /* MIG */,
 				6DB0566B1C402BCA0082806F /* Mach */,
-				6DB0566C1C402BD50082806F /* Socket */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -414,14 +404,6 @@
 			name = Mach;
 			sourceTree = "<group>";
 		};
-		6DB0566C1C402BD50082806F /* Socket */ = {
-			isa = PBXGroup;
-			children = (
-				6DB056701C402C3A0082806F /* SharedSocket.h */,
-			);
-			name = Socket;
-			sourceTree = "<group>";
-		};
 		6DB056721C402C5C0082806F /* MIG */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,15 +422,6 @@
 			name = Mach;
 			sourceTree = "<group>";
 		};
-		6DB056741C402C650082806F /* Socket */ = {
-			isa = PBXGroup;
-			children = (
-				6DB056831C402CC80082806F /* ServerSocket.h */,
-				6DB056841C402CC80082806F /* ServerSocket.m */,
-			);
-			name = Socket;
-			sourceTree = "<group>";
-		};
 		6DB056761C402C7A0082806F /* MIG */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,15 +438,6 @@
 				6DB0568D1C402CE60082806F /* ClientMach.m */,
 			);
 			name = Mach;
-			sourceTree = "<group>";
-		};
-		6DB056781C402C800082806F /* Socket */ = {
-			isa = PBXGroup;
-			children = (
-				6DB0568F1C402CF10082806F /* ClientSocket.h */,
-				6DB056901C402CF10082806F /* ClientSocket.m */,
-			);
-			name = Socket;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -581,7 +545,6 @@
 				6DB055F31C3FDE020082806F /* main.m in Sources */,
 				6DB056451C3FFF0C0082806F /* ServerDistributedObjects.m in Sources */,
 				6DB0565A1C401F630082806F /* ServerCFMessagePort.m in Sources */,
-				6DB056851C402CC80082806F /* ServerSocket.m in Sources */,
 				6DB056271C3FEB130082806F /* ServerNSXPCConnection.m in Sources */,
 				6DB0563B1C3FF6100082806F /* ServerXPC.m in Sources */,
 				6DB055F01C3FDE020082806F /* ServerApplication.m in Sources */,
@@ -606,7 +569,6 @@
 				6DB0568E1C402CE60082806F /* ClientMach.m in Sources */,
 				6DB0563E1C3FF6200082806F /* ClientXPC.m in Sources */,
 				6DB0561F1C3FE8CE0082806F /* Shared.m in Sources */,
-				6DB056911C402CF10082806F /* ClientSocket.m in Sources */,
 				6D0A32D31C445B4D00C7D43F /* shared_mig.defs in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
