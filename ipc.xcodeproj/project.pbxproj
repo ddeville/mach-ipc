@@ -164,8 +164,8 @@
 		6DB055FF1C3FDE500082806F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6DB056541C401DA40082806F /* goobypls.jpg */,
 				6DB055F61C3FDE020082806F /* MainMenu.xib */,
+				6DB056541C401DA40082806F /* goobypls.jpg */,
 			);
 			name = Resources;
 			sourceTree = "<group>";

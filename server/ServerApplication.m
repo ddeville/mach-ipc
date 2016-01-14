@@ -12,11 +12,13 @@
 #import "Server.h"
 #import "ServerNSXPCConnection.h"
 
-#define MANAGE_CLIENT   0
+#define MANAGE_CLIENT   1
 
 @interface ServerApplication (/* Bindings */)
 
 @property (copy, nonatomic) NSAttributedString *log;
+
+@property (strong, nonatomic) IBOutlet NSTextView *logTextView;
 
 @end
 
@@ -34,11 +36,11 @@
     NSImage *(^requestHandler)(id <Server>, NSString *) = ^NSImage *(id <Server> server, NSString *request) {
         __strong typeof(welf) strelf = welf;
         
-        NSImage *image = [[NSBundle mainBundle] imageForResource:request];
+        NSImage *image = [strelf _generateImage:request text:NSStringFromClass([server class])];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [strelf _appendToLog:[NSString stringWithFormat:@"Received request on server %@: \"%@\"", server, request]];
-            [strelf _appendToLog:[NSString stringWithFormat:@"Responding from server %@ with image %@", server, image]];
+            [strelf _appendToLog:[NSString stringWithFormat:@"Received request: \"%@\"", request] server:server];
+            [strelf _appendToLog:[NSString stringWithFormat:@"Responding with image %@", image] server:server];
         });
         
         return image;
@@ -51,7 +53,7 @@
         server.requestHandler = requestHandler;
         [server startServer];
         [servers addObject:server];
-        [self _appendToLog:[NSString stringWithFormat:@"%@ started", [server class]]];
+        [self _appendToLog:@"Started" server:server];
     }
     
     self.servers = servers;
@@ -69,7 +71,7 @@
 #endif /* MANAGE_CLIENT */
 }
 
-- (void)_appendToLog:(NSString *)string
+- (void)_appendToLog:(NSString *)string server:(id <Server>)server
 {
     if (string == nil) {
         return;
@@ -81,9 +83,11 @@
     }
 
     NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle];
-    [log appendFormat:@"%@: %@", time, string];
+    [log appendFormat:@"%@ (%@): %@", time, NSStringFromClass([server class]), string];
 
     self.log = [[NSAttributedString alloc] initWithString:log attributes:nil];
+    
+    [self.logTextView scrollToEndOfDocument:nil];
 }
 
 - (void)_launchClientIfNeeded
@@ -94,7 +98,30 @@
     NSString *clientPath = [[NSBundle mainBundle] pathForResource:@"client" ofType:@"app"];
     [[NSWorkspace sharedWorkspace] performSelector:@selector(launchApplication:) withObject:clientPath afterDelay:0.1];
     
-    [self _appendToLog:@"Launched client"];
+    [self _appendToLog:@"Launched client" server:nil];
+}
+
+- (NSImage *)_generateImage:(NSString *)filename text:(NSString *)text
+{
+    NSImage *image = [[NSBundle mainBundle] imageForResource:filename];
+    
+    NSDictionary *attributes = @{
+        NSForegroundColorAttributeName : [NSColor redColor],
+        NSFontAttributeName: [NSFont boldSystemFontOfSize:50.0]
+    };
+    
+    CGSize textSize = [text sizeWithAttributes:attributes];
+    CGSize imageSize = image.size;
+    
+    CGPoint textPosition = CGPointMake(imageSize.width - textSize.width - 20.0, imageSize.height - textSize.height - 20.0);
+    
+    NSImage *updatedImage = [NSImage imageWithSize:imageSize flipped:YES drawingHandler:^BOOL(CGRect rect) {
+        [image drawInRect:rect];
+        [text drawAtPoint:textPosition withAttributes:attributes];
+        return YES;
+    }];
+    
+    return updatedImage;
 }
 
 @end

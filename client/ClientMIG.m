@@ -17,6 +17,14 @@
 
 - (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image, NSError *error))completion
 {
+    // since the request is synchronous, run it on a background queue
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self _actuallyRequestImage:name completion:completion];
+    });
+}
+
+- (void)_actuallyRequestImage:(NSString *)name completion:(void(^)(NSImage *image, NSError *error))completion
+{
     mach_port_t server_port;
     kern_return_t looked_up = bootstrap_look_up(bootstrap_port, mig_mach_service_name, &server_port);
     if (looked_up != BOOTSTRAP_SUCCESS) {

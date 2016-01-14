@@ -19,5 +19,5 @@ static const NSInteger ClientErrorCodeUnknown = 0;
 
 static inline void completeWithDefaultError(void (^completion)(NSImage *image, NSError *error))
 {
-    completeWithDefaultError(completion);
+    completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
 }

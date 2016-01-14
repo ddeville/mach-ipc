@@ -12,7 +12,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="ClientApplication"/>
+        <customObject id="Voe-Tx-rLC" customClass="ClientApplication">
+            <connections>
+                <outlet property="logTextView" destination="MND-0K-5SW" id="Stn-Nf-LOY"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
@@ -666,28 +670,28 @@
         <window title="client" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="701" y="175" width="480" height="480"/>
+            <rect key="contentRect" x="701" y="175" width="480" height="540"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1280" height="777"/>
-            <value key="minSize" type="size" width="480" height="480"/>
-            <value key="maxSize" type="size" width="480" height="480"/>
+            <value key="minSize" type="size" width="480" height="540"/>
+            <value key="maxSize" type="size" width="480" height="540"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                <rect key="frame" x="0.0" y="0.0" width="480" height="540"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heu-vz-wrg">
-                        <rect key="frame" x="20" y="331" width="440" height="129"/>
+                        <rect key="frame" x="20" y="372" width="440" height="148"/>
                         <clipView key="contentView" id="W6J-Dq-BQU">
-                            <rect key="frame" x="1" y="1" width="438" height="127"/>
+                            <rect key="frame" x="1" y="1" width="438" height="146"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView editable="NO" importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="MND-0K-5SW">
-                                    <rect key="frame" x="0.0" y="0.0" width="438" height="127"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="438" height="146"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="minSize" width="438" height="127"/>
+                                    <size key="minSize" width="438" height="146"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="438" height="127"/>
+                                    <size key="minSize" width="438" height="146"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <connections>
                                         <binding destination="Voe-Tx-rLC" name="attributedString" keyPath="self.log" id="27N-o6-Dqw">
@@ -709,12 +713,12 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="wgW-RK-fbs">
-                            <rect key="frame" x="423" y="1" width="16" height="127"/>
+                            <rect key="frame" x="423" y="1" width="16" height="146"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="106-0o-6fT">
-                        <rect key="frame" x="17" y="58" width="446" height="256"/>
+                        <rect key="frame" x="17" y="99" width="446" height="256"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="250" id="ENf-0o-KZm"/>
                         </constraints>
@@ -734,25 +738,46 @@
                         </connections>
                     </button>
                     <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="bwS-yX-7RR">
-                        <rect key="frame" x="232" y="178" width="16" height="16"/>
+                        <rect key="frame" x="232" y="177" width="16" height="16"/>
                         <connections>
                             <binding destination="Voe-Tx-rLC" name="animate" keyPath="self.loading" id="Svo-XS-5a6"/>
                         </connections>
                     </progressIndicator>
+                    <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NcQ-BE-OkC">
+                        <rect key="frame" x="203" y="58" width="76" height="26"/>
+                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="RWR-1z-8fn">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="9fS-e2-mry">
+                                <items>
+                                    <menuItem title="Item 1" id="2I1-GX-d0u"/>
+                                    <menuItem title="Item 2" id="x7t-21-7ba"/>
+                                    <menuItem title="Item 3" id="nl7-4f-Up1"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                        <connections>
+                            <binding destination="Voe-Tx-rLC" name="content" keyPath="self.clientClassNames" id="nnR-no-Rg0"/>
+                            <binding destination="DPJ-wk-QdC" name="selectedObject" keyPath="values.selectedClient" previousBinding="nnR-no-Rg0" id="Qnz-mJ-ipr"/>
+                        </connections>
+                    </popUpButton>
                 </subviews>
                 <constraints>
                     <constraint firstItem="106-0o-6fT" firstAttribute="top" secondItem="heu-vz-wrg" secondAttribute="bottom" constant="20" id="7r6-34-Lgb"/>
                     <constraint firstItem="106-0o-6fT" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="KBz-74-WgX"/>
-                    <constraint firstItem="flZ-98-xgf" firstAttribute="top" secondItem="106-0o-6fT" secondAttribute="bottom" constant="20" id="ScF-UK-d4I"/>
+                    <constraint firstItem="NcQ-BE-OkC" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="OVy-AV-bb0"/>
                     <constraint firstItem="heu-vz-wrg" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="WYj-Xz-vxb"/>
                     <constraint firstAttribute="trailing" secondItem="106-0o-6fT" secondAttribute="trailing" constant="20" id="WrX-Tx-WeX"/>
                     <constraint firstItem="flZ-98-xgf" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="aT2-Hz-1Fl"/>
                     <constraint firstItem="heu-vz-wrg" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="ftL-dJ-T9P"/>
                     <constraint firstAttribute="bottom" secondItem="flZ-98-xgf" secondAttribute="bottom" constant="20" id="i6H-Vx-lji"/>
+                    <constraint firstItem="NcQ-BE-OkC" firstAttribute="top" secondItem="106-0o-6fT" secondAttribute="bottom" constant="20" id="kgW-Wh-Qtf"/>
+                    <constraint firstItem="flZ-98-xgf" firstAttribute="top" secondItem="NcQ-BE-OkC" secondAttribute="bottom" constant="20" id="o9O-Iv-DDf"/>
                     <constraint firstAttribute="trailing" secondItem="heu-vz-wrg" secondAttribute="trailing" constant="20" id="pJe-Sj-AeU"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="320" y="401"/>
+            <point key="canvasLocation" x="-24" y="409.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="DPJ-wk-QdC"/>
     </objects>
 </document>

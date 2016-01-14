@@ -45,6 +45,7 @@
     
     NSPort *serverPort = [[NSMachBootstrapServer sharedInstance] portForName:PortMessageServiceName];
     if (serverPort == nil) {
+        completeWithDefaultError(completion);
         return;
     }
 
