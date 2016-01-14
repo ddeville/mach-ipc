@@ -56,7 +56,7 @@
         return;
     }
 
-    NSImage *image = self.requestHandler([NSString stringWithUTF8String:filename]);
+    NSImage *image = self.requestHandler(self, [NSString stringWithUTF8String:filename]);
     if (image == nil) {
         return;
     }

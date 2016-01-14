@@ -49,7 +49,7 @@ CFDataRef messagePortCallBack(CFMessagePortRef local, SInt32 msgid, CFDataRef da
         return NULL;
     }
 
-    NSImage *image = self.requestHandler(request);
+    NSImage *image = self.requestHandler(self, request);
     if (image == nil) {
         return NULL;
     }

@@ -8,6 +8,6 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-static CFStringRef const MessagePortServiceName = CFSTR("com.ddeville.ipc");
+static CFStringRef const MessagePortServiceName = CFSTR("com.ddeville.ipc.cfmessageport");
 
 static uint32_t MessagePortRequestImageId = 1;

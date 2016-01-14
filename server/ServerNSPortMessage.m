@@ -50,7 +50,7 @@
     NSData *nameData = message.components[0];
     NSString *name = [[NSString alloc] initWithData:nameData encoding:NSUTF8StringEncoding];
 
-    NSImage *image = self.requestHandler(name);
+    NSImage *image = self.requestHandler(self, name);
     if (image == nil) {
         return;
     }

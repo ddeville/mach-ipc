@@ -37,7 +37,7 @@
 
 - (NSData *)requestImage:(NSString *)request
 {
-    NSImage *image = self.requestHandler(request);
+    NSImage *image = self.requestHandler(self, request);
     return [NSKeyedArchiver archivedDataWithRootObject:image];
 }
 

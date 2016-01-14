@@ -70,7 +70,7 @@
     // retrieve the image for the given filename and get some data from it
     NSString *filename = [NSString stringWithUTF8String:request.filename];
     
-    NSImage *image = self.requestHandler(filename);
+    NSImage *image = self.requestHandler(self, filename);
     if (image == nil) {
         return;
     }

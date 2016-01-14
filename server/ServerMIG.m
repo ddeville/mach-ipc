@@ -103,7 +103,7 @@ kern_return_t request_image(mach_port_t server_port, request_input_t request, vm
         return -1;
     }
 
-    NSImage *image = server.requestHandler(filename);
+    NSImage *image = server.requestHandler(server, filename);
     if (image == nil) {
         return -1;
     }

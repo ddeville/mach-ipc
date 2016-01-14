@@ -49,7 +49,7 @@
 
 - (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
 {
-    NSImage *image = self.requestHandler(name);
+    NSImage *image = self.requestHandler(self, name);
     completion(image);
 }
 

@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-static NSString * const XPCMachServiceName = @"com.ddeville.ipc";
+static NSString * const XPCMachServiceName = @"com.ddeville.ipc.nsxpc";
 
 @protocol ConnectionProtocol <NSObject>
 

@@ -12,7 +12,7 @@
 #import "Server.h"
 #import "ServerNSXPCConnection.h"
 
-#define MANAGE_CLIENT   1
+#define MANAGE_CLIENT   0
 
 @interface ServerApplication (/* Bindings */)
 
@@ -22,7 +22,7 @@
 
 @interface ServerApplication ()
 
-@property (strong, nonatomic) id <Server> server;
+@property (strong, nonatomic) NSArray<id <Server>> *servers;
 
 @end
 
@@ -30,25 +30,31 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification
 {
-    self.server = [[NSClassFromString(ServerClasses[CONNECTION_TYPE]) alloc] init];
-
-    __weak ServerApplication *weakServer = self;
-    self.server.requestHandler = ^NSImage *(NSString *request) {
-        __strong ServerApplication *server = weakServer;
-
+    __weak typeof(self) welf = self;
+    NSImage *(^requestHandler)(id <Server>, NSString *) = ^NSImage *(id <Server> server, NSString *request) {
+        __strong typeof(welf) strelf = welf;
+        
         NSImage *image = [[NSBundle mainBundle] imageForResource:request];
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [server _appendToLog:[NSString stringWithFormat:@"Received request \"%@\"", request]];
-            [server _appendToLog:[NSString stringWithFormat:@"Responding with image %@", image]];
+            [strelf _appendToLog:[NSString stringWithFormat:@"Received request on server %@: \"%@\"", server, request]];
+            [strelf _appendToLog:[NSString stringWithFormat:@"Responding from server %@ with image %@", server, image]];
         });
         
         return image;
     };
-
-    [self.server startServer];
-
-    [self _appendToLog:@"Server started"];
+    
+    NSMutableArray *servers = [NSMutableArray array];
+    
+    for (int idx; idx < sizeof(ServerClasses) / sizeof(NSString *); idx++) {
+        id <Server> server = [[NSClassFromString(ServerClasses[idx]) alloc] init];
+        server.requestHandler = requestHandler;
+        [server startServer];
+        [servers addObject:server];
+        [self _appendToLog:[NSString stringWithFormat:@"%@ started", [server class]]];
+    }
+    
+    self.servers = servers;
     
 #if MANAGE_CLIENT
     [self _launchClientIfNeeded];
@@ -75,8 +81,7 @@
     }
 
     NSString *time = [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterMediumStyle];
-    NSString *server = NSStringFromClass([self.server class]);
-    [log appendFormat:@"%@ (%@): %@", time, server, string];
+    [log appendFormat:@"%@: %@", time, string];
 
     self.log = [[NSAttributedString alloc] initWithString:log attributes:nil];
 }

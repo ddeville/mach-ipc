@@ -6,4 +6,4 @@
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-static const char *mig_mach_service_name = "com.ddeville.ipc";
+static const char *mig_mach_service_name = "com.ddeville.ipc.mig";

@@ -6,7 +6,7 @@
 //  Copyright © 2016 Damien DeVille. All rights reserved.
 //
 
-static const char *xpc_mach_service_name = "com.ddeville.ipc";
+static const char *xpc_mach_service_name = "com.ddeville.ipc.xpc";
 
 static const char *xpc_request_filename_key = "filename";
 static const char *xpc_response_image_key = "image";

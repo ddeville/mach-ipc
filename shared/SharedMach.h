@@ -8,7 +8,7 @@
 
 #import <mach/mach.h>
 
-static const char *mach_service_name = "com.ddeville.ipc";
+static const char *mach_service_name = "com.ddeville.ipc.mach";
 
 static mach_msg_id_t mach_message_request_image_id = 1;
 

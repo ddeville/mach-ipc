@@ -12,6 +12,6 @@
 
 - (void)startServer;
 
-@property (copy, nonatomic) NSImage *(^requestHandler)(NSString *request);
+@property (copy, nonatomic) NSImage *(^requestHandler)(id <Server>, NSString *request);
 
 @end
