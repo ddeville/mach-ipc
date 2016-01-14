@@ -26,7 +26,7 @@
     [connection resume];
     [server requestImage:name completion:^(NSImage *image) {
         if (image == nil) {
-            completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+            completeWithDefaultError(completion);
         } else {
             completion(image, nil);
         }

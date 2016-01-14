@@ -39,7 +39,7 @@
     mach_port_t server_port;
     kern_return_t looked_up = bootstrap_look_up(bootstrap_port, mach_service_name, &server_port);
     if (looked_up != BOOTSTRAP_SUCCESS) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     
@@ -48,7 +48,7 @@
     kern_return_t allocated = mach_port_allocate(mach_task_self(), MACH_PORT_RIGHT_RECEIVE, &client_port);
     if (allocated != BOOTSTRAP_SUCCESS) {
         mach_port_deallocate(mach_task_self(), server_port);
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     
@@ -68,7 +68,7 @@
     mach_port_deallocate(mach_task_self(), server_port);
     if (sent != MACH_MSG_SUCCESS) {
         mach_port_deallocate(mach_task_self(), client_port);
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     
@@ -83,12 +83,12 @@
         kern_return_t received = mach_msg(&response.header, MACH_RCV_MSG, 0, response.header.msgh_size, client_port, 0, MACH_PORT_NULL);
         mach_port_deallocate(mach_task_self(), client_port);
         if (received != MACH_MSG_SUCCESS) {
-            completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+            completeWithDefaultError(completion);
             return;
         }
 
         if (response.data.address == NULL) {
-            completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+            completeWithDefaultError(completion);
             return;
         }
         
@@ -96,13 +96,13 @@
         NSData *data = [NSData dataWithBytes:response.data.address length:response.data.size];
         vm_deallocate(mach_task_self(), (vm_address_t)response.data.address, response.data.size);
         if (data == nil) {
-            completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+            completeWithDefaultError(completion);
             return;
         }
         
         NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:NULL];
         if (image == nil) {
-            completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+            completeWithDefaultError(completion);
             return;
         }
         

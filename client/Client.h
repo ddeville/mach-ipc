@@ -16,3 +16,8 @@
 
 static NSString * const ClientErrorDomain = @"ClientErrorDomain";
 static const NSInteger ClientErrorCodeUnknown = 0;
+
+static inline void completeWithDefaultError(void (^completion)(NSImage *image, NSError *error))
+{
+    completeWithDefaultError(completion);
+}

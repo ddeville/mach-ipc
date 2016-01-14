@@ -20,7 +20,7 @@
     mach_port_t server_port;
     kern_return_t looked_up = bootstrap_look_up(bootstrap_port, mig_mach_service_name, &server_port);
     if (looked_up != BOOTSTRAP_SUCCESS) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     
@@ -28,20 +28,20 @@
     mach_msg_type_number_t data_len;
     kern_return_t ret = request_image(server_port, (char *)name.UTF8String, &data, &data_len);
     if (ret != MACH_MSG_SUCCESS) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     
     NSData *imageData = [NSData dataWithBytes:(const void *)data length:(NSUInteger)data_len];
     vm_deallocate(mach_task_self(), data, data_len);
     if (imageData == nil) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     
     NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:imageData error:NULL];
     if (image == nil) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
     

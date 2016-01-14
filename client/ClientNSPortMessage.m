@@ -71,19 +71,21 @@
         return;
     }
 
-    void (^completion)(NSImage *) = self.pendingRequests[name];
+    void (^completion)(NSImage *, NSError *) = self.pendingRequests[name];
     [self.pendingRequests removeObjectForKey:name];
 
     if (completion == nil) {
+        completeWithDefaultError(completion);
         return;
     }
 
     NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:message.components[1] error:NULL];
     if (image == nil) {
+        completeWithDefaultError(completion);
         return;
     }
 
-    completion(image);
+    completion(image, nil);
 }
 
 @end

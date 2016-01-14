@@ -19,7 +19,7 @@
 
     CFMessagePortRef port = CFMessagePortCreateRemote(kCFAllocatorDefault, MessagePortServiceName);
     if (port == NULL) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
 
@@ -30,13 +30,13 @@
     CFRelease(port);
 
     if (sent != kCFMessagePortSuccess) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
 
     NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:(__bridge NSData *)imageData error:NULL];
     if (image == nil) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
 

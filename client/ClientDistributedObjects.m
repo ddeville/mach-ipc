@@ -26,13 +26,13 @@
 
     NSData *data = [server requestImage:name];
     if (data == nil) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
 
     NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:NULL];
     if (image == nil) {
-        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        completeWithDefaultError(completion);
         return;
     }
 
