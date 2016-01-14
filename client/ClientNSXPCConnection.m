@@ -12,7 +12,7 @@
 
 @implementation ClientNSXPCConnection
 
-- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image, NSError *error))completion
 {
     NSXPCConnection *connection = [[NSXPCConnection alloc] initWithMachServiceName:XPCMachServiceName options:(NSXPCConnectionOptions)0];
 
@@ -24,7 +24,13 @@
     id <ConnectionProtocol> server = connection.remoteObjectProxy;
 
     [connection resume];
-    [server requestImage:name completion:completion];
+    [server requestImage:name completion:^(NSImage *image) {
+        if (image == nil) {
+            completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        } else {
+            completion(image, nil);
+        }
+    }];
 }
 
 @end

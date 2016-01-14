@@ -12,7 +12,7 @@
 
 @implementation ClientDistributedObjects
 
-- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image, NSError *error))completion
 {
     // NSConnection needs a serviced runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
     NSAssert([NSThread isMainThread], @"The client needs a serviced runloop and should be called on the main thread");
@@ -26,15 +26,17 @@
 
     NSData *data = [server requestImage:name];
     if (data == nil) {
+        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
         return;
     }
 
     NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:data error:NULL];
     if (image == nil) {
+        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
         return;
     }
 
-    completion(image);
+    completion(image, nil);
 }
 
 @end

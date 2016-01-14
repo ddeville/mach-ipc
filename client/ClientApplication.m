@@ -44,12 +44,16 @@
     self.image = nil;
     self.loading = YES;
 
-    [self.client requestImage:filename completion:^(NSImage *image) {
+    [self.client requestImage:filename completion:^(NSImage *image, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.loading = NO;
             self.image = image;
 
-            [self _appendToLog:[NSString stringWithFormat:@"Received image %@", image]];
+            if (image != nil) {
+                [self _appendToLog:[NSString stringWithFormat:@"Received image %@", image]];
+            } else {
+                [self _appendToLog:[NSString stringWithFormat:@"Received error %@", error]];
+            }
         });
     }];
 }

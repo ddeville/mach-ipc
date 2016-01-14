@@ -10,6 +10,9 @@
 
 @protocol Client <NSObject>
 
-- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion;
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image, NSError *error))completion;
 
 @end
+
+static NSString * const ClientErrorDomain = @"ClientErrorDomain";
+static const NSInteger ClientErrorCodeUnknown = 0;

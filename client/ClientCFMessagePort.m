@@ -12,13 +12,14 @@
 
 @implementation ClientCFMessagePort
 
-- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
+- (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image, NSError *error))completion
 {
     // CFMessagePort needs a serviced runloop so make sure we're on the main thread (we could service a runloop on a background thread too...)
     NSAssert([NSThread isMainThread], @"The client needs a serviced runloop and should be called on the main thread");
 
     CFMessagePortRef port = CFMessagePortCreateRemote(kCFAllocatorDefault, MessagePortServiceName);
     if (port == NULL) {
+        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
         return;
     }
 
@@ -29,12 +30,17 @@
     CFRelease(port);
 
     if (sent != kCFMessagePortSuccess) {
+        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
         return;
     }
 
     NSImage *image = [NSKeyedUnarchiver unarchiveTopLevelObjectWithData:(__bridge NSData *)imageData error:NULL];
+    if (image == nil) {
+        completion(nil, [NSError errorWithDomain:ClientErrorDomain code:ClientErrorCodeUnknown userInfo:nil]);
+        return;
+    }
 
-    completion(image);
+    completion(image, nil);
 }
 
 @end

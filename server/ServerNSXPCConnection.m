@@ -50,7 +50,6 @@
 - (void)requestImage:(NSString *)name completion:(void(^)(NSImage *image))completion
 {
     NSImage *image = self.requestHandler(name);
-    completion(image);
 }
 
 @end
