@@ -36,7 +36,7 @@ struct mach_response_msg {
 };
 typedef struct mach_response_msg mach_response_msg_t;
 
-// the response message as seen by the sender (additional trailer)
+// the response message as seen by the receiver (additional trailer)
 struct mach_response_receiver_msg {
     mach_msg_header_t header;
     mach_msg_body_t body;
