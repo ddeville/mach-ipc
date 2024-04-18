@@ -33,3 +33,5 @@ routine request_image(
 import "shared_mig_types.h";
 
 #undef _SHARED_MIG_DEFS_
+
+#endif // _SHARED_MIG_DEFS_
